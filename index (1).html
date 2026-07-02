@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escola de Futebol Nova Opção</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#1a7a3e;--gc:#e8f5ee;--gm:#c5e3cf;--bg:#f5f6f7;--bd:#dde1e7;--ci:#6b7280;--tx:#1a1d23;--r:#c0392b;--rc:#fdf2f0;--am:#d97706;--amc:#fef9ee;}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--tx);font-size:14px;line-height:1.5}
+header{background:var(--g);color:#fff;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.hl{display:flex;align-items:center;gap:10px}
+.he{width:44px;height:44px;border-radius:50%;background:#fff;overflow:hidden;flex-shrink:0}
+.he img{width:100%;height:100%;object-fit:contain;padding:2px}
+.ht{font-size:15px;font-weight:700;line-height:1.2}
+.ht span{display:block;font-size:11px;font-weight:400;opacity:.8}
+.hb{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 12px;font-size:12px}
+nav{background:#fff;border-bottom:1px solid var(--bd);padding:0 24px;display:flex;overflow-x:auto}
+nav button{background:none;border:none;border-bottom:2px solid transparent;padding:13px 15px;font-size:13px;font-weight:500;color:var(--ci);cursor:pointer;white-space:nowrap}
+nav button:hover{color:var(--g)}
+nav button.on{color:var(--g);border-bottom-color:var(--g);font-weight:700}
+main{padding:24px;max-width:1100px;margin:0 auto}
+.pag{display:none}.pag.show{display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;margin-bottom:24px}
+.card{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:18px 20px}
+.cl{font-size:11px;color:var(--ci);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.cv{font-size:28px;font-weight:700;line-height:1}
+.cs{font-size:12px;color:var(--ci);margin-top:4px}
+.cg{color:var(--g)}.cr{color:var(--r)}.cam{color:var(--am)}
+.st{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.tw{background:#fff;border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin-bottom:20px}
+table{width:100%;border-collapse:collapse}
+thead{background:var(--bg);border-bottom:1px solid var(--bd)}
+th{padding:10px 13px;text-align:left;font-size:11px;font-weight:600;color:var(--ci);text-transform:uppercase;letter-spacing:.4px}
+td{padding:11px 13px;border-bottom:1px solid var(--bd);font-size:13px;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--bg)}
+.tvz{padding:38px;text-align:center;color:var(--ci);font-size:13px}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600}
+.bi{background:#e0f0ff;color:#1565c0}.bm{background:#f3e5f5;color:#6a1b9a}.bn{background:#fff8e1;color:#f57f17}
+.bpg{background:#e8f5ee;color:#1a7a3e}.bpd{background:#fdf2f0;color:#c0392b}.bx{background:#f3f4f6;color:#6b7280}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:none}
+.btn:active{transform:scale(.98)}
+.bv{background:var(--g);color:#fff}.bv:hover{opacity:.88}
+.bo{background:transparent;border:1px solid var(--bd);color:var(--tx)}.bo:hover{background:var(--bg)}
+.br2{background:var(--r);color:#fff}.br2:hover{opacity:.88}
+.bam{background:var(--am);color:#fff}.bam:hover{opacity:.88}
+.bsm{padding:5px 10px;font-size:12px}
+.al-card{background:#fff;border:1px solid var(--bd);border-radius:10px;margin-bottom:14px;overflow:hidden}
+.al-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;gap:12px;flex-wrap:wrap}
+.al-header:hover{background:var(--bg)}
+.al-nome{font-size:14px;font-weight:700}
+.al-sub{font-size:12px;color:var(--ci);margin-top:2px}
+.al-status-verde{background:#e8f5ee;color:#1a7a3e;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;white-space:nowrap}
+.al-status-verm{background:#fdf2f0;color:#c0392b;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;white-space:nowrap}
+.meses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;padding:14px 18px;border-top:1px solid var(--bd);background:var(--bg)}
+.mes-box{border-radius:8px;padding:10px 8px;text-align:center;font-size:12px;font-weight:600;border:1px solid transparent}
+.mes-pago{background:#e8f5ee;color:#1a7a3e;border-color:#c5e3cf}
+.mes-pend{background:#fdf2f0;color:#c0392b;border-color:#f5c6c2}
+.mes-vazio{background:#f5f6f7;color:#9ca3af;border-color:#e5e7eb}
+.mes-icon{font-size:14px;margin-bottom:3px}
+
+
+.fc{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:24px;margin-bottom:20px}
+.ft{font-size:15px;font-weight:700;margin-bottom:18px;padding-bottom:13px;border-bottom:1px solid var(--bd)}
+.fg2{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-bottom:12px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:12px;font-weight:600;color:var(--ci);text-transform:uppercase;letter-spacing:.4px}
+.fg input,.fg select,.fg textarea{padding:9px 11px;border:1px solid var(--bd);border-radius:7px;font-size:13px;color:var(--tx);background:#fff;outline:none;font-family:inherit}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px var(--gc)}
+.fg textarea{resize:vertical;min-height:70px}
+.fdv{font-size:12px;font-weight:600;color:var(--ci);text-transform:uppercase;letter-spacing:.5px;margin:18px 0 12px;display:flex;align-items:center;gap:10px}
+.fdv::after{content:"";flex:1;height:1px;background:var(--bd)}
+.info{background:var(--gc);border:1px solid var(--gm);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--g);margin-bottom:18px;line-height:1.6}
+.info.am{background:var(--amc);border-color:#fcd34d;color:#92400e}
+.info.vm{background:var(--rc);border-color:#f5c6c2;color:var(--r)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:999;padding:20px}
+.modal{background:#fff;border-radius:12px;padding:26px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.mt{font-size:15px;font-weight:700;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between}
+.mx{background:none;border:none;font-size:20px;cursor:pointer;color:var(--ci);line-height:1}
+.mb{display:flex;gap:10px;margin-top:18px;justify-content:flex-end}
+.filt{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.filt input,.filt select{padding:8px 11px;border:1px solid var(--bd);border-radius:7px;font-size:13px;background:#fff;outline:none;font-family:inherit}
+.filt input:focus,.filt select:focus{border-color:var(--g)}
+.filt input{min-width:200px}
+.cobr{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:15px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:12px;flex-wrap:wrap}
+.cobr h4{font-size:14px;font-weight:600}.cobr p{font-size:12px;color:var(--ci);margin-top:2px}
+.cv2{font-size:16px;font-weight:700;color:var(--r);white-space:nowrap}
+.cac{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.res{background:var(--bg);border-radius:8px;padding:12px 16px;margin-top:12px}
+.res p{font-size:13px;margin:3px 0}
+.dg{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin:14px 0}
+.db{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:10px 4px;font-size:13px;font-weight:600;cursor:pointer;text-align:center;color:var(--tx)}
+.db:hover{border-color:var(--g);color:var(--g);background:var(--gc)}
+.db.sel{background:var(--g);color:#fff;border-color:var(--g)}
+
+.pres-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:16px}
+.pres-card{background:#fff;border:2px solid var(--bd);border-radius:9px;padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .15s}
+.pres-card.presente{border-color:var(--g);background:var(--gc)}
+.pres-card.falta{border-color:var(--r);background:var(--rc)}
+.pres-dot{width:10px;height:10px;border-radius:50%;background:var(--bd);flex-shrink:0}
+.pres-card.presente .pres-dot{background:var(--g)}
+.pres-card.falta .pres-dot{background:var(--r)}
+.pres-nome{font-size:13px;font-weight:600;line-height:1.2}
+.pres-cat{font-size:11px;color:var(--ci)}
+.unif-item{background:#fff;border:1px solid var(--bd);border-radius:9px;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:10px;flex-wrap:wrap}
+.aniv-card{background:#fff;border:1px solid var(--bd);border-radius:9px;padding:13px 16px;display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.aniv-data{background:var(--amc);color:var(--am);border-radius:8px;padding:8px 12px;text-align:center;font-weight:700;font-size:13px;min-width:52px;flex-shrink:0}
+.rel-box{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:20px;margin-bottom:14px}
+.rel-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd);font-size:13px}
+.rel-row:last-child{border-bottom:none}
+.rel-val{font-weight:700;font-size:15px}
+.alerta-box{background:var(--amc);border:1px solid #fcd34d;border-radius:9px;padding:14px 16px;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.alerta-box .ai{font-size:20px;flex-shrink:0}
+@media(max-width:600px){main{padding:14px}.fg2{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}nav button{padding:11px 10px;font-size:12px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hl">
+    <div class="he"><img id="logo" alt="Logo"></div>
+    <div class="ht">Escola de Futebol Nova Opção<span>Sistema de Gestão</span></div>
+  </div>
+  <div class="hb">Treinos: Ter &middot; Qui &middot; Sáb</div>
+</header>
+<nav>
+  <button class="on" onclick="ir('dashboard')">Painel Geral</button>
+  <button onclick="ir('alunos')">Alunos</button>
+  <button onclick="ir('inscricao')">Nova Inscrição</button>
+  <button onclick="ir('cobranca')">Cobranças</button>
+  <button onclick="ir('pagamentos')">&#10003; Pagamentos</button>
+  <button onclick="ir('relatorio')">&#128200; Relatório</button>
+  <button onclick="ir('aniversarios')">&#127874; Aniversários</button>
+  <button onclick="ir('inativos')">Ex-Alunos</button>
+  <button onclick="ir('config')">&#9881; Configurações</button>
+</nav>
+<main>
+
+<div id="pg-dashboard" class="pag show">
+  <div class="cards" id="ctopo"></div>
+  <div class="st">Alunos por Categoria</div>
+  <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+    <div class="card"><div class="cl">Infantil <span style="font-weight:400;font-size:10px;text-transform:none">2010&ndash;2012</span></div><div class="cv cg" id="n-inf">0</div><div class="cs">alunos</div></div>
+    <div class="card"><div class="cl">Mirim <span style="font-weight:400;font-size:10px;text-transform:none">2013&ndash;2014</span></div><div class="cv" style="color:#6a1b9a" id="n-mir">0</div><div class="cs">alunos</div></div>
+    <div class="card"><div class="cl">Iniciação <span style="font-weight:400;font-size:10px;text-transform:none">2015&ndash;2020</span></div><div class="cv cam" id="n-ini">0</div><div class="cs">alunos</div></div>
+  </div>
+  <div class="st">Mensalidades em Aberto</div>
+  <div class="tw"><table>
+    <thead><tr><th>Aluno</th><th>Categoria</th><th>Mensalidade</th><th>Situação</th></tr></thead>
+    <tbody id="tb-dash"></tbody>
+  </table></div>
+</div>
+
+<div id="pg-alunos" class="pag">
+  <div class="filt">
+    <input type="text" id="busca" placeholder="Buscar por nome..." oninput="renderAlunos()">
+    <select id="fil-cat" onchange="renderAlunos()">
+      <option value="">Todas as categorias</option>
+      <option>Infantil</option><option>Mirim</option><option>Iniciação</option>
+    </select>
+    <select id="fil-sit" onchange="renderAlunos()">
+      <option value="">Todos</option><option value="Pago">Em dia</option><option value="Pendente">Com pendência</option>
+    </select>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Nome</th><th>Nasc.</th><th>Categoria</th><th>Treino</th><th>Mensalidade</th><th>Situação</th><th>Ações</th></tr></thead>
+    <tbody id="tb-alunos"></tbody>
+  </table></div>
+</div>
+
+<div id="pg-inscricao" class="pag">
+  <div class="info"><strong>Valores:</strong> Mensalidade R$150 &middot; Só Sábado R$120 &middot; Uniforme R$150 &middot; Inscrição R$100<br>Desconto de 10% ao inscrever 2 ou mais alunos do mesmo responsável.<br><strong>Categorias:</strong> Infantil 2010–2012 &middot; Mirim 2013–2014 &middot; Iniciação 2015–2020</div>
+
+  <div id="bloco-completo" class="fc">
+    <div class="ft">Dados do Aluno</div>
+    <div class="fg2">
+      <div class="fg" style="grid-column:span 2"><label>Nome completo</label><input type="text" id="f-nome" placeholder="Nome do aluno"></div>
+      <div class="fg"><label>Data de nascimento</label><input type="date" id="f-nasc" onchange="detectarCat()"></div>
+      <div class="fg"><label>Categoria (automático)</label><input type="text" id="f-cat" readonly style="background:var(--bg);color:var(--ci)"></div>
+      <div class="fg"><label>Peso (kg)</label><input type="number" id="f-peso" placeholder="Ex: 42"></div>
+      <div class="fg"><label>Altura (cm)</label><input type="number" id="f-alt" placeholder="Ex: 155"></div>
+      <div class="fg"><label>Posição</label>
+        <select id="f-pos">
+          <option value="">Selecionar</option>
+          <option>Goleiro</option><option>Lateral direito</option><option>Lateral esquerdo</option>
+          <option>Zagueiro</option><option>Volante</option><option>Meia</option>
+          <option>Meia-atacante</option><option>Atacante</option><option>Ponta direita</option><option>Ponta esquerda</option>
+        </select>
+      </div>
+      <div class="fg"><label>Dias de treino</label>
+        <select id="f-treino" onchange="calcMens()">
+          <option value="">Selecionar</option>
+          <option value="3dias">Ter, Qui e Sáb &mdash; R$ 150,00</option>
+          <option value="sabado">Somente Sábado &mdash; R$ 120,00</option>
+        </select>
+      </div>
+    </div>
+    <div class="fdv">Documentos</div>
+    <div class="fg2">
+      <div class="fg"><label>RG</label><input type="text" id="f-rg" placeholder="000.000.000-0"></div>
+      <div class="fg"><label>CPF</label><input type="text" id="f-cpf" placeholder="000.000.000-00"></div>
+    </div>
+    <div class="fdv">Responsável</div>
+    <div class="fg2">
+      <div class="fg"><label>Nome do pai</label><input type="text" id="f-pai"></div>
+      <div class="fg"><label>Nome da mãe</label><input type="text" id="f-mae"></div>
+      <div class="fg"><label>Contato do responsável</label><input type="text" id="f-contato" placeholder="(00) 00000-0000"></div>
+      <div class="fg"><label>Irmão já matriculado?</label>
+        <select id="f-irmao" onchange="calcMens()">
+          <option value="nao">Não</option>
+          <option value="sim">Sim &mdash; desconto 10%</option>
+        </select>
+      </div>
+    </div>
+    <div class="fdv">Início e Equipamentos</div>
+    <div class="fg2">
+      <div class="fg"><label>Data de início na escola</label><input type="date" id="f-inicio" onchange="calcMensInicio()"></div>
+      <div class="fg"><label>Número da camiseta</label><input type="number" id="f-camisa" placeholder="Ex: 10" min="1" max="99"></div>
+      <div class="fg"><label>Número da blusa (agasalho)</label><input type="number" id="f-blusa" placeholder="Ex: 10" min="1" max="99"></div>
+      <div class="fg"><label>Número da garrafinha</label><input type="number" id="f-garrafa" placeholder="Ex: 7" min="1" max="99"></div>
+    </div>
+    <div id="inicio-aviso" class="info" style="display:none;margin-bottom:0"></div>
+    <div class="fdv">Pagamento da Matrícula</div>
+    <div class="fg2">
+      <div class="fg"><label>Forma de pagamento</label>
+        <select id="f-pgto" onchange="toggleParc()">
+          <option value="">Selecionar</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="PIX">PIX</option>
+          <option value="debito">Cartão de débito</option>
+          <option value="credito">Cartão de crédito</option>
+        </select>
+      </div>
+      <div class="fg" id="bloco-parc" style="display:none"><label>Parcelas</label>
+        <select id="f-parc">
+          <option value="1">1x à vista</option>
+          <option value="2">2x sem juros</option>
+          <option value="3">3x sem juros</option>
+        </select>
+      </div>
+      <div class="fg"><label>Situação da mensalidade</label>
+        <select id="f-sit"><option value="Pendente">Pendente</option><option value="Pago">Pago</option></select>
+      </div>
+    </div>
+    <div id="res-mens" class="res" style="display:none"></div>
+    <div style="margin-top:18px;display:flex;gap:10px;justify-content:flex-end">
+      <button class="btn bo" onclick="limparForm()">Limpar</button>
+      <button class="btn bv" onclick="salvarAluno()">&#10003; Confirmar Inscrição</button>
+    </div>
+  </div>
+
+  <!-- PAGAR MENSALIDADE -->
+  <div id="bloco-mensalidade" class="fc" style="display:none">
+    <div class="ft">Pagamento de Mensalidade</div>
+    <div class="fg2">
+      <div class="fg" style="grid-column:span 2">
+        <label>Nome do aluno</label>
+        <select id="pm-aluno" onchange="carregarDadosMens()">
+          <option value="">Selecionar aluno...</option>
+        </select>
+      </div>
+      <div class="fg"><label>Mês de referência</label><input type="text" id="pm-mes" placeholder="Ex: Janeiro/2025"></div>
+      <div class="fg"><label>Valor da mensalidade</label><input type="text" id="pm-valor" readonly style="background:var(--bg);color:var(--ci)" placeholder="Selecione o aluno"></div>
+      <div class="fg"><label>Forma de pagamento</label>
+        <select id="pm-pgto" onchange="toggleParcMens()">
+          <option value="">Selecionar</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="PIX">PIX</option>
+          <option value="debito">Cartão de débito</option>
+          <option value="credito">Cartão de crédito</option>
+        </select>
+      </div>
+      <div class="fg" id="bloco-parc-mens" style="display:none"><label>Parcelas</label>
+        <select id="pm-parc">
+          <option value="1">1x à vista</option>
+          <option value="2">2x sem juros</option>
+          <option value="3">3x sem juros</option>
+        </select>
+      </div>
+    </div>
+    <div id="pm-info" class="info" style="display:none;margin-top:12px"></div>
+    <div style="margin-top:18px;display:flex;gap:10px;justify-content:flex-end">
+      <button class="btn bv" onclick="registrarMensalidade()">&#10003; Registrar Pagamento</button>
+    </div>
+  </div>
+
+  <!-- ADQUIRIR UNIFORME -->
+  <div id="bloco-uniforme" class="fc" style="display:none">
+    <div class="ft">Aquisição de Uniforme</div>
+    <div class="fg2">
+      <div class="fg" style="grid-column:span 2">
+        <label>Nome do aluno</label>
+        <select id="un-aluno">
+          <option value="">Selecionar aluno...</option>
+        </select>
+      </div>
+      <div class="fg"><label>Quantidade</label>
+        <select id="un-qtd" onchange="calcUnif()">
+          <option value="1">1 uniforme — R$ 150,00</option>
+          <option value="2">2 uniformes — R$ 300,00</option>
+          <option value="3">3 uniformes — R$ 450,00</option>
+        </select>
+      </div>
+      <div class="fg"><label>Valor total</label><input type="text" id="un-valor" readonly value="R$ 150,00" style="background:var(--bg);color:var(--ci)"></div>
+      <div class="fg"><label>Tamanho</label>
+        <select id="un-tam">
+          <option value="">Selecionar</option>
+          <option>PP</option><option>P</option><option>M</option><option>G</option><option>GG</option>
+          <option>XGG</option><option>4</option><option>6</option><option>8</option><option>10</option>
+          <option>12</option><option>14</option><option>16</option>
+        </select>
+      </div>
+      <div class="fg"><label>Forma de pagamento</label>
+        <select id="un-pgto" onchange="toggleParcUnif()">
+          <option value="">Selecionar</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="PIX">PIX</option>
+          <option value="debito">Cartão de débito</option>
+          <option value="credito">Cartão de crédito</option>
+        </select>
+      </div>
+      <div class="fg" id="bloco-parc-unif" style="display:none"><label>Parcelas</label>
+        <select id="un-parc">
+          <option value="1">1x à vista</option>
+          <option value="2">2x sem juros</option>
+          <option value="3">3x sem juros</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-top:18px;display:flex;gap:10px;justify-content:flex-end">
+      <button class="btn bv" onclick="registrarUniforme()">&#10003; Confirmar Uniforme</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="pg-cobranca" class="pag">
+  <div class="info am">Notifique os responsáveis com mensalidade em aberto. A mensagem já vem pronta para enviar no WhatsApp.</div>
+  <div class="st"><span>Mensalidades Pendentes</span><button class="btn bv" onclick="notifTodos()">&#128226; Notificar Todos</button></div>
+  <div id="lista-cobr"></div>
+</div>
+
+<div id="pg-inativos" class="pag">
+  <div class="info vm">Alunos desligados ficam registrados aqui. O histórico é mantido para controle interno.</div>
+  <div class="tw"><table>
+    <thead><tr><th>Nome</th><th>Categoria</th><th>Contato</th><th>Motivo</th><th>Desligado em</th></tr></thead>
+    <tbody id="tb-inat"></tbody>
+  </table></div>
+</div>
+
+<div id="pg-config" class="pag">
+  <div class="fc" style="max-width:560px">
+    <div class="ft">Dia de Vencimento da Mensalidade</div>
+    <p style="font-size:13px;color:var(--ci);margin-bottom:14px">Toque no dia que as mensalidades vencem. Esse dia aparece nas mensagens de cobrança.</p>
+    <div class="dg" id="dgrid"></div>
+    <div id="cfg-ok" class="info" style="display:none;margin-top:12px"></div>
+  </div>
+  <div class="fc" style="max-width:560px">
+    <div class="ft">Informações da Escola</div>
+    <div class="fg2" style="grid-template-columns:1fr 1fr">
+      <div class="fg"><label>Chave PIX</label><input type="text" id="cfg-pix" placeholder="CPF, e-mail ou chave aleatória" oninput="salvarCfg()"></div>
+      <div class="fg"><label>Telefone de contato</label><input type="text" id="cfg-tel" placeholder="(00) 00000-0000" oninput="salvarCfg()"></div>
+    </div>
+    <p style="font-size:12px;color:var(--ci);margin-top:4px;margin-bottom:20px">Esses dados aparecem automaticamente nas mensagens de cobrança.</p>
+    <div style="border-top:1px solid var(--bd);padding-top:18px">
+      <p style="font-size:14px;font-weight:600;margin-bottom:6px">Enviar Cobrança para Atrasados</p>
+      <p style="font-size:13px;color:var(--ci);margin-bottom:14px">Gera uma mensagem pronta com a chave PIX e o telefone da escola para todos que estão em atraso.</p>
+      <button class="btn bam" onclick="msgCobrancaGeral()">&#128242; Gerar Mensagem de Cobrança</button>
+    </div>
+  </div>
+</div>
+
+<div id="pg-pagamentos" class="pag">
+  <div class="info">Veja a situação de cada mês por aluno. Clique no aluno para expandir e registrar o pagamento do mês.</div>
+
+  <div class="st">
+    <span id="pag-resumo-tit">Todos os Alunos</span>
+    <div style="display:flex;gap:8px">
+      <select id="pag-filtro" onchange="renderPagamentos()" style="padding:6px 10px;border:1px solid var(--bd);border-radius:7px;font-size:12px;font-family:inherit;outline:none">
+        <option value="todos">Todos</option>
+        <option value="pendente">Só pendentes</option>
+        <option value="pago">Só em dia</option>
+      </select>
+      <button class="btn bv bsm" onclick="renderPagamentos()">&#8635; Atualizar</button>
+    </div>
+  </div>
+
+  <div id="lista-pag-cards"></div>
+</div>
+
+<!-- RELATÓRIO -->
+<div id="pg-relatorio" class="pag">
+  <div style="display:flex;gap:10px;margin-bottom:18px;align-items:center;flex-wrap:wrap">
+    <select id="rel-mes" style="padding:8px 12px;border:1px solid var(--bd);border-radius:7px;font-size:13px;font-family:inherit;outline:none"></select>
+    <select id="rel-ano" style="padding:8px 12px;border:1px solid var(--bd);border-radius:7px;font-size:13px;font-family:inherit;outline:none"></select>
+    <button class="btn bv bsm" onclick="renderRelatorio()">&#128200; Gerar Relatório</button>
+  </div>
+  <div id="rel-alerta"></div>
+  <div id="rel-corpo"></div>
+</div>
+
+<!-- ANIVERSÁRIOS -->
+<div id="pg-aniversarios" class="pag">
+  <div class="info">Alunos que fazem aniversário este mês. Uma boa oportunidade para parabenizar as famílias.</div>
+  <div class="st"><span id="aniv-titulo">Aniversariantes</span></div>
+  <div id="lista-aniv"></div>
+</div>
+
+
+</main>
+
+<div id="ov-pag" class="ov" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal">
+    <div class="mt">
+      <span>Registrar Pagamento</span>
+      <button class="mx" onclick="document.getElementById('ov-pag').style.display='none'">&#10005;</button>
+    </div>
+    <div id="ov-pag-info" style="background:var(--gc);border:1px solid var(--gm);border-radius:8px;padding:12px 14px;margin-bottom:16px;font-size:13px"></div>
+    <div class="fg2">
+      <div class="fg">
+        <label>Mes de referencia</label>
+        <input type="text" id="pag-mes" placeholder="Ex: Jan/2025">
+      </div>
+      <div class="fg">
+        <label>Forma de pagamento</label>
+        <select id="pag-pgto" onchange="toggleParcPag()">
+          <option value="">Selecionar</option>
+          <option value="PIX">PIX</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="debito">Cartao de debito</option>
+          <option value="credito">Cartao de credito</option>
+        </select>
+      </div>
+      <div class="fg" id="bloco-parc-pag" style="display:none">
+        <label>Parcelas</label>
+        <select id="pag-parc">
+          <option value="1">1x a vista</option>
+          <option value="2">2x sem juros</option>
+          <option value="3">3x sem juros</option>
+        </select>
+      </div>
+    </div>
+    <input type="hidden" id="pag-id-aluno">
+    <div class="mb">
+      <button class="btn bo" onclick="document.getElementById('ov-pag').style.display='none'">Cancelar</button>
+      <button class="btn bv" onclick="confirmarPagamento()">&#10003; Confirmar Pagamento</button>
+    </div>
+  </div>
+</div>
+
+<div id="ov-editar" class="ov" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal" style="max-width:600px">
+    <div class="mt">
+      <span id="edit-titulo">Editar Aluno</span>
+      <button class="mx" onclick="document.getElementById('ov-editar').style.display='none'">&#10005;</button>
+    </div>
+    <input type="hidden" id="edit-id">
+
+    <div style="font-size:12px;font-weight:600;color:var(--ci);text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px">Dias de Treino</div>
+    <div class="fg2" style="grid-template-columns:1fr;margin-bottom:16px">
+      <div class="fg">
+        <label>Alterar treino para</label>
+        <select id="edit-treino" onchange="calcEditMens()">
+          <option value="3dias">Terca, Quinta e Sabado — R$ 150,00</option>
+          <option value="sabado">Somente Sabado — R$ 120,00</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="font-size:12px;font-weight:600;color:var(--ci);text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px">Dados Pessoais</div>
+    <div class="fg2">
+      <div class="fg"><label>Nome completo</label><input type="text" id="edit-nome"></div>
+      <div class="fg"><label>Posicao</label>
+        <select id="edit-pos">
+          <option value="">Selecionar</option>
+          <option>Goleiro</option><option>Lateral direito</option><option>Lateral esquerdo</option>
+          <option>Zagueiro</option><option>Volante</option><option>Meia</option>
+          <option>Meia-atacante</option><option>Atacante</option><option>Ponta direita</option><option>Ponta esquerda</option>
+        </select>
+      </div>
+      <div class="fg"><label>Peso (kg)</label><input type="number" id="edit-peso"></div>
+      <div class="fg"><label>Altura (cm)</label><input type="number" id="edit-alt"></div>
+      <div class="fg"><label>Contato do responsavel</label><input type="text" id="edit-contato"></div>
+      <div class="fg"><label>Nome do pai</label><input type="text" id="edit-pai"></div>
+      <div class="fg"><label>Nome da mae</label><input type="text" id="edit-mae"></div>
+    </div>
+
+    <div class="fdv" style="margin-top:16px">Equipamentos</div>
+    <div class="fg2">
+      <div class="fg"><label>Data de inicio</label><input type="date" id="edit-inicio"></div>
+      <div class="fg"><label>Numero da camiseta</label><input type="number" id="edit-camisa" placeholder="Ex: 10" min="1" max="99"></div>
+      <div class="fg"><label>Numero da blusa</label><input type="number" id="edit-blusa" placeholder="Ex: 10" min="1" max="99"></div>
+      <div class="fg"><label>Numero da garrafinha</label><input type="number" id="edit-garrafa" placeholder="Ex: 7" min="1" max="99"></div>
+    </div>
+    <div id="edit-resumo" style="background:var(--gc);border:1px solid var(--gm);border-radius:8px;padding:11px 14px;font-size:13px;color:var(--g);margin-top:4px"></div>
+
+    <div class="mb">
+      <button class="btn bo" onclick="document.getElementById('ov-editar').style.display='none'">Cancelar</button>
+      <button class="btn bv" onclick="salvarEdicao()">&#10003; Salvar Alteracoes</button>
+    </div>
+  </div>
+</div>
+
+<div id="ov-sel-aluno" class="ov" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal" style="max-width:560px">
+    <div class="mt">
+      <span>Enviar Cobrança</span>
+      <button class="mx" onclick="document.getElementById('ov-sel-aluno').style.display='none'">&#10005;</button>
+    </div>
+    <p style="font-size:13px;color:var(--ci);margin-bottom:14px">Selecione os alunos que deseja notificar. O sistema gera a mensagem com o contato do responsável cadastrado.</p>
+
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <button class="btn bo bsm" onclick="selTodos(true)">Marcar todos</button>
+      <button class="btn bo bsm" onclick="selTodos(false)">Desmarcar todos</button>
+      <button class="btn bo bsm" onclick="selSoPendentes()">Só pendentes</button>
+    </div>
+
+    <div id="sel-lista" style="max-height:320px;overflow-y:auto;border:1px solid var(--bd);border-radius:8px"></div>
+
+    <div class="mb" style="margin-top:16px">
+      <button class="btn bo" onclick="document.getElementById('ov-sel-aluno').style.display='none'">Cancelar</button>
+      <button class="btn bv" onclick="gerarMsgSelecionados()">&#128242; Gerar Mensagem</button>
+    </div>
+  </div>
+</div>
+
+<div id="ov-det" class="ov" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal">
+    <div class="mt"><span id="det-nome">Detalhes</span><button class="mx" onclick="document.getElementById('ov-det').style.display='none'">&#10005;</button></div>
+    <div id="det-corpo"></div>
+  </div>
+</div>
+
+<div id="ov-desl" class="ov" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal">
+    <div class="mt"><span>Desligar Aluno</span><button class="mx" onclick="document.getElementById('ov-desl').style.display='none'">&#10005;</button></div>
+    <p style="margin-bottom:14px;font-size:13px;color:var(--ci)">O aluno será movido para ex-alunos.</p>
+    <div class="fg"><label>Motivo do desligamento</label><textarea id="mot-desl" placeholder="Ex: Mudança de cidade..."></textarea></div>
+    <input type="hidden" id="id-desl">
+    <div class="mb">
+      <button class="btn bo" onclick="document.getElementById('ov-desl').style.display='none'">Cancelar</button>
+      <button class="btn br2" onclick="confirmarDesl()">Desligar Aluno</button>
+    </div>
+  </div>
+</div>
+
+<div id="ov-notif" class="ov" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal">
+    <div class="mt"><span>Mensagem de Cobrança</span><button class="mx" onclick="document.getElementById('ov-notif').style.display='none'">&#10005;</button></div>
+    <p style="font-size:12px;color:var(--ci);margin-bottom:10px">Copie e cole no WhatsApp do responsável:</p>
+    <textarea id="txt-notif" rows="11" style="width:100%;padding:10px;border:1px solid var(--bd);border-radius:7px;font-size:13px;font-family:inherit;resize:vertical"></textarea>
+    <div class="mb">
+      <button class="btn bo" onclick="document.getElementById('ov-notif').style.display='none'">Fechar</button>
+      <button class="btn bv" onclick="copiarNotif()">Copiar Texto</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var el = document.getElementById('logo');
+  el.src = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBxdWFsaXR5ID0gOTUK/9sAQwACAQEBAQECAQEBAgICAgIEAwICAgIFBAQDBAYFBgYGBQYGBgcJCAYHCQcGBggLCAkKCgoKCgYICwwLCgwJCgoK/9sAQwECAgICAgIFAwMFCgcGBwoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoK/8AAEQgAgQCWAwERAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A/e3/AIR/TP8Ank//AH1QAf8ACP6Z/wA83/76oAP7A0z/AJ5P/wB9UAL/AGBpn/PN/wDvo0AH9gaZ/wA83/76NAB/YGm/88n/AO+qAD+wNN/55v8A99UAfmB+2p/wX5+Kf7Of7aPxR/Yz+BP/AATK8Q/E/Ufg94cTxL421WDx/DYbNE+zWtxJfQ2/2WV5URbyIEAlgc/LgEgA7z9qX/gsj4dX/ghjrf8AwV1/Ys0PT728httLGnaF40tpJY7O7l1q0067tLqO3mjYvF5s2CkgDbUcEqQCAZv/AARN/wCCgH7dH/BQTxbqmuftC61+zNqfguz8FW2oMnwU8VXF5rWlandSRNbW2o28l3N9mBhW9DKwDeZBtB+VqAP0V/sDTP8Anm//AH0aAPBvg/8A8FH/APgnj8d/jZ4j/Zv+Gn7UvhW88e+FdfutF1fwldal9lvvtlvK0UyQRzhDdBXUgvB5i5HWgD3n+wNN/wCeb/8AfVAB/YGm5/1b/wDfRoAP7A03/nm//fVAB/YGm/8APN/++jQAf2Bpv/PN/wDvo0AH9gab/wA83/76oAP7A03P+rf/AL6NAF3AoAABxQAYGKADAoAMUAfi34q/4OGf2u/2N/8Agqz8X/hd+3L8N9NuP2ePCnj+18JHWvCukFbrwgLqOW60vULj5nluFurVWeRTwfJcwAFDFKAfsf4F8c+C/id4N0v4ifDrxTYa3oOt2EV7pGr6XdLPb3lvIoZJY5EJVlZSCCDQB+R3/BT/APZA/wCCmvgX/gtBcftpf8E5/wBk63+Ilr47/Z+l8J+KLjVdctNP0+2vJjcWxaZ7iaPzPLjisZfLH3tm3IoA3NH/AOCCn7Svhj/g3T1T/glb4X8e+FH+J/irXLXXdavdU1C4j0m1uP7WtbyS3SWOCSQhIbZE3CPDyBjwpyAD1v8A4ImfsI/t+fsNeJdc8J/tL/Bj9mHwz4TufCNlZw6t8DdAuLTV9Z1C0dUhl1KR4YhcARPcsXI3eZKTxuNAH1D/AMFI/wBp3WP2NP2E/ij+0t4Y8PXmq6x4V8I3M+hWFlZPcNJfuBDbFkQE+Us0kbSNjCxq7HgGgD8j/wDgiL/wQv8AGEngzwt8cv8AgpH+zr8Jdf8ABWt6fB8VdB+IE+pX8HjDS9XeS0uYrLUX3xxSWhhR53ikEkasX3YaRsAHun7Mf/BdP4sfG34/ftJft3eIPEGm6P8AsSfBfQ/7I0Oe60ZTqHiTW43HlvYzFkYy3DSD925Kqk1mmxHd5AAfp1+z/wDGbRf2h/gj4S+OmgeGdb0Sx8YeH7XWLHSfElmLa/toZ41kRJ4gzBHCsMgE9etAHYYHvQAYHvQAYHvQAYHvQAYHv+dABk+ooAQZ4+YfnQAc4zuH50Ac78ST4j13wdrvgv4afEDT9B8XXmh3K6DqN3apd/2fctGyw3T2xdfORJCrFCQG2kZ5oA/Kf9hH/gvD4r/YoufiL+wv/wAF3PFx8NfFH4TWs1/pPjmS0LxeONL3Zi+ziJFE1wwZfKKKvnRn5gkkUuQDV8Of8Esf2cP+CxX7fHhv/grr8QfgquqfA/4k/A61+1eDPHJvdL1ceJI5ntobp7aEhZYkskVVkMhjbekkRkG1gAfof+xZ+xb8B/2Av2f9K/Zo/Zu0fUbDwtpEs01tBqutT30rSytvlcvMx27my2xAqAkkKMnIB6tz/eFAC8/3hQAc/wB4UABBOQcEelAHIfH34M+H/wBoX4C+NP2fPFGo3dlpPjfwlqPh/UbrTZPLngt7y1kt5HiborqshKnGMgUAfk5+yp/wb3ftweHp/ht+xt+2P8evhr4g/ZT+DXjK88V6P4e8K6bcW2qeNb95pJrdNXjeMR+XG8jlh5knyExZcFXjAOC/bD+Pv7Zn/BUT/grza+Mf+CF3iK4jn/Zq8JXmm+KfiBqfiSVPC3iC5km8w6RHbndbyrK8Ri34HnlPMLrHbQzUAftL8NPGmrX2j6R4N+KOteGofiHH4as7/wAU6BoGpealvLIuySSFJMTG2M6SpHI6jdsweQaAOq59RQAc8cigA5x1FABznqKAE6nr+tAB+P60ARXn2v7HKLAp5/lN5Hmk7d+OM47Z60Afyi6H4R+A/jPQPjJ47/bC/bI8e/Ar9v8A+F/i7V9eXxJ4p1yaKx8SNCPMjsbZkUNBLlTHEsbDIkiaNZozsjAP25/ZA/ZW+BH/AAWV/Yk/Zh/bk/4KP/s66Xr/AMS9B8PrqMVzf2nkpqOHljR7mFQEntp9kV6IGBiDSDauxnVgD6H1X9vz4Q2f/BQfw/8A8E1/A8aan4yfwTeeKfFQtZQIfD2mw+VHbxyAD/XTSTRlY+NsS7zgPHuAPfxjPX9aAPD/ANv/APb+/Z5/4Jw/AN/j3+0X4xt9K0+41SDStHinEzG8vps7I9sEUsuxUWSWRkjkZY4nKo7AIwB8af8ABS34cf8ABe34m+AfC3xn/Ym/bD8O/D23udRs7TUPBt5YWkMk5vruC2tpxI1ncmEK0yb4Gnm43OJCSIUAPZvh1+0P+1T/AME8/g74Uk/4Kr/Hbwl4iglSKz8RfEqA2+n2f2t3OPLYQ2yBlXGbd4g8qpJLFK8mLOgD7TimjniWeGUOjqGR1fIIPQj1oAdn3/8AHqAPI/hP+0x8FP2pPG/xd/Zsjihn1r4aa6vh3x54av8Aa++3vLNLi3m2/wAcFxBMVGR9+OZOdmSAfE//AAU6+MWlf8G6v/BNm30n/gmj+x9Z2una14ontZNemlafTvDF3dnK3+oF3ae5ZjiGLefLXy40dwBHFIAfC/8AwTw/YC/4K6W37XOv/tn+G/iBrmtftDeG/G2lXfiLxd4p103HgL4neBtXghYx2V/FD83kqvneWgZUjMXlRpLAiMAf0NoWKjfgNj5gHyAaAFz7/wDj1AB+P/j1ABn3/wDHqADH1/SgAx06/pQB+QH7V37b/wC0f8Rv+C9d3+xF4t/4KOJ+zJ8PfAFn4e1LwxpdxotuI/iSs629xewm+uCscTsry28YYum6EhYy4egD2f8AZr8T/sVf8FhP2yf2gPhv+1d/wT6+G+seKv2dvHdppOieK9QsLPV/7W0m4E5s3knAYM+bWV2gZmRBKi4DB6AP0SsbCw0mwh0zTbKK2traJYre3gjVEiRQAqKo4AAAAA4GKAP5tf8AgjH+1Hqw/wCDld/jD8ZtYkW8/aE8CzXNleXkh2CbUtOtNTjtkZuixyWrWaKPutEIxyMUAf0O/Aj47eAP2iPBV345+HWo+faWHibV9Bvo2I8y3vdN1CexuY3XqpEtu5APJVlPQigD4d/4LLf8E0vAX/BTr9qf4C/Dn4+fEzWdG8BeFdUmur/Q9LVUGti6jmEytMSDCyy2mnW4cAkDUmC7WdTQB+eX/B3d8Qv25PgL8QPhP8AfB/7QPiqb4R6roDano+n2hW3um1axuxkXM9qqPciBHsmhL8qxLEtIPMIB9D/FD9jT9uL/AIKxf8G4fgGf9pf9piV/iJeadp3iXw1ZXGkwwRa1J9olh02DUJgrSzTz21xCFkTyx50kZdJCGZgD9NP+CdGgfEHwj+wj8JPBnxU1+31fxBofgLTdL1LWLSRni1FraBYFukZwrMsqxrIGYAkOCQCaAOu+IP7RHwx+GXxh+H/wJ8U6w0XiT4l3WpQ+FbFFBM/2Cza8uXPPCrGo55+Z1HegD8MP+CfP7Zep+IP+Dn741fGz4fa49x4I8cfEkfDvVXgk3W98BY3kdlKnZmM2iiRH6+UZscMaAP3k+MXwg+Gvx/8AhZr/AMFfjD4QtNe8L+J9Ll0/W9Ivk3RXNvIu1lPdT3DAhlYBgQQCAD8SP+Ckn7dH7dH/AAT81bxL/wAEhP8Agmh4F8MfBvwb8F/g7L4rsPHPi/xaLvWPEOhRoJZ30tr0bBP5rzx+UFkk3wyeW0QQAAHU/wDBrD+1f498aftGfGT9njw98XfiD8Wfh7f+F9H8b3HxE8e6dPFd6b4nngtYdQ0+V5Xk3tKzMUO8gpYMylgxYgH7ZY6cfyoAO3T+VABjnp/KgAx7f+O0AeP/ALfH7aHwz/4J7fskeM/2vfi3Y3d5o3hCwjl/s2wCie/uZpkt7e2jLcAyTSxruPCgljwpoA/Jj/gol/wVc/4Iq/tf+IfAH7P3/BVv9h7xdZeOk0OyufF2qaKQ83wzlvSrrZXF/DLBcSBFkikmiWJkQyAGNpQyKAfqx+wb/wAE9/2RP+Cc/wAIZPhJ+yB8NYtB0fUrz7fqd5Jey3l1qc5UKJpriVmaTCgBVBCKM7VGTkA5z/grtp/xb1b/AIJ5fEHRvgR4pudD8W3p0m20XWLSQRyWUkmrWaNKHPCBUZyWPCgEngGgD+bDVbC5/ai0Lwj8R/hBq6+BviX4e8XTXnwf1cSi0TSfEDXb6heeB7t5MCymS/a4vdImlOyWO5lt3fzARbgH0B/wTF/4L9+M/wBlf/goJ4jufil4E1K08JfGbxE138YvhsllIt54X8ZjbFfanp0DfM63EimWS0wJsloVV3ghM4B+5f7cfwg8aft0/sa3Hiz9hj456Ro/jLU/DRvPhp46iPn2MyT+TcR/vEyUVpILaaOdAWhmt4JMMEaNwD4//wCCNn7VH/BR34J6d8S/Bv8AwWI+EOoL45t/EFtBofjnWtf8P6fcavYxQbBbR+feW0c9rCwMkc0AZHe7nJPmbywBxPwf0T/gt3+3J/wUv1uHw6l58Fv2TPCvju41Oys7+3067TV1ZWYzWM8PmNeTS3Ej3kciyva2szKw3PAsbAH6r/Ef4kfBn9k34IXXjrx9rdn4a8G+ENJjjMjoxWCCMLFDBEigvLIx2RxxIGd3ZUUMzAEA/m0/ab/4LbfGT9tP9uLX/jf+y74U1a9+Jur6NffDr9nLwlZlWbwXpV0Suo6/cOreX/aVwgdE2t5dvFvklcrBCZADxM6XqP7Gvw38D/CP9nDxnHfeM/E2tXFt4Y8VaXMynxV4nv430mfV7I4DnSdNt57uxsrohTcXt5d3MJZImWMA/rD+BnivWvHvwT8HeOfElt5Oo614W0+/1CEpjZPNbRyOuO2GYjFAHy//AMFhP+Ce3/BM39qP4Sf8NO/8FFvBV1LpHwe0e91WbXNJ1Ke0uf7PVfNmtGMDBp0dkG2P7284RlLtuAPh34f/APBx1+074D+FVp8bvhB/wQ88Z6R+yt4TsbW2g8XHUJIJYdFiEdtFcwg2wgdUjCKEV3QbQpnAG4AH7I/DX4g+Ffi38OtA+KvgXUBeaJ4m0W11bRrsRlfPtLiFZonweRlHU496ANr8P/HaAD8P/HaADHoKAPmb/gqT4f8A2Hfjt8C7D9hP9uD4gSaJYfHXWrfw74RishKt5dauk0U1t9mkSKRI5UlWJwZR5ZxtbKkggH5leMf+CBP7I/hrRPh1+zB8F/8Agp34YHg340fEO5n+L2r+KPEFjeeIfiPNp01pLZaNpbwqFHkO9y8qiTeZbqKR1l8uNEAP3KtLO2sLWKxs4FjhhjEcUaDAVQMAD2AoA+Sv+C3/AIq+Ofw9/wCCffiD4k/AHwVD4r1LQtZ06TWvBNyHaHxPo9xOLK/0uRF+ZxPBdOgC/OG2snzqtAH4ONonwE/bO/t342fsw/E6JNV8T6aY/G1pr+ntfrqkIO/7P4w0e2H2lZY2AYeJdMSWJmVLiZLO5Mk9AHxF+3f4l+IN7480+x+Ong6XS/iVoUUdvdeJrbVo7+PxPpQRTp9+b2ElL2VIx5a3sbMLiEQFmMkTySgH7wf8Grn7ZP7UXx9+B/xD/Zq+KnhzXfDdzB4eg8SfD/xfqehSm0u5Lpp4Lu8gWVVjlQzrb3LIrMslxPdvkCTaoBteN/8Ag6ltf2K/HOr/AAC/4KM/sealaeNPDeoyaffaj8K/EVne2upOhIF0ljfy293ZRSAblWbcdpBDEEUAfTP/AATZ/wCC/f7H3/BSvxRY+B/BHw++IXgTVNalu4vCrePtAjt7HxFNaxrLdW9jeQSywzXEMTrI8BZZAh3BSASAD80/+DuH9uz9p6w+K037Lnhn4UeLtH8AaHp9pD/wmlxo88elXt7e27S3DW9xt8qWYwOtqCG3RKL5Bu88+WAfm3/wT98H/Hfxx4Eu/hx+xd8KrLUPEfiN/s/xO8e+J2W203TtOd2FvonnyMq+XOYzPNChaW+IS3ETxxSx3AB9NzeDvgJ+wT8QpPjb+0n8ZV+O/wC0drUaaX4b8I2ZKGCeSMW0VpBZgCXTYAhWATXaWlxFCTHZ2CMYr23AP6MP+Cb3iv4v/ED9gT4O/EH4+3DS+M/EPw60rVfEbvAIj9pubZJ2BjUAR48wDYAAuMYGKAOt/ao/Zx8Bftefs4+Nf2Y/iiLkaB448O3OkalLZSBZ4ElQqJoyQQJEba65BG5RkEZFAH5KeIf+De39rjxPo+h/s5/tz/8ABcvU7/8AZ+8LQWtlY+B7NBpcl9ptrtWC2mElx5KFERAryC427QQMgEAH7AfBL/hUVt8K9D8P/AbV9GvPCWh6dFpOhtoOopdWsFvaoIEhSRGYHywgTGSRtweaAOp2nHT9aAFwc9P1oANw7GgD8+v+C4n7BX7fX7X3jz9n34zfsB674BtPEXwV8Xah4hMfjy+mjilu2W0FoUSOCRZQpim3B2TGVxnJwAfDn/BOv/gi9/wWK+Df7V/7Mmj/ALUnw48An4VfAvx54k8SDXfDniWGW7e41WESSvOryB5v39tbKmyJSgZt2RyAD96NwoA4r9pHw9qHi79nvxx4Z0XwLaeJ7698J6hFp/hy+vHt4tTuDbv5Vs0yYeEO+1fMUhkzuXkCgD+VP4i3ngT4l+PY/iBqH7L9hBrWo3DXVs/xK8D+JtO1pJQ5DLBq3g8rb6pOkiskl1dWUE/mo4lBkVyQD5Z/bqtvG58fWd14z+HnxB0R1hdIZvG+rahex3IZjITayajZWtyse5mO2XzGJYndQB/T5/wbnf8ABTj9nn9tn9gH4f8AwT8M+JrHTviJ8K/BeneHPFPg6aZY7nyrK3jtYr+FODLbypGjFlGI3ZkbBClgD8g/+Dyj9oLVfiF/wUw0L4G2HjRrrRfAXw6sRNosM+YrPVLua4nmdlBwJWt2s8k87AnryAc9/wAG1n/BM/8AZN/4KNyfEmx8e/tA+KPA3xj8EajousfDTUPC2rJb3emwpM7z30ETDFwweOKNj0i3xt1cUAfoV/wdw/8ABUT4B+AP2QdS/wCCbPhPV9N8S/EPx1c2EviK1glSX/hGbC2uobtZZtvEdzK8MaJHwwjaRztHl7wD8F/2cviH8MvC3gs+HPjP4v8Aimmi3k023SfDXi1tB0sbwqyM862OoNOXCKGUW68IBubAwAfaP/BNXxj+wZZftGeEPAn7M/7HGsfEPxn4m8SWWgW8s/2mSztReOY5GudUumU+SIRPJJHb6ZZzPFFKPtSxGVSAf1ZQRQ20CW9vEscaKFREGAoA4AA6CgB+4UAfhT/wTK/4NbfgB8bPC/xH8c/8FJ/g18QdF8U2/wAXdYtfDFkviUWdvqGgAQPbXapEGf55HnGS4JCD5R1IB+v/AOxf+xf8AP2AvgLp/wCzX+zN4bvNJ8J6ZeXF1aWV9qs95Iss8hklbzJmZuXJOM4GeAKAPV9woANwoATJP/66ADPTkfnQB5h8HP2tvhN8cPjp8Vv2efBOrCbxD8INV0yx8VQhwQrX1il5Cy47YMkZHZoWHbAAPT8nPX9aADJx17+tAH5I/wDBe79g79qlPEY+P37EX7J/g7xdoviEEfEW00G+8V6braXhyP7QmtvD+q2q6tGy7FfFvLcptziVT8gB+BP7Rn7OOoW3jQfD+2+HGpReO7uU48O6X4Y1DSbW0PLMwXWS+q3gIDFpbhII4tjHe65wAeFRan4r+Dnj7+0vAHxBmtdV0e4xb+IPDOpSRGOXGGME8ZViM7gHU4YDKkqQSAZfiTxL4j8Za9d+KvF/iC91XVL+dpr7UtSu3nuLmRuS8kjks7HuSSTQAmgeIfEHhXVode8L65eabf25Jt72wuXhmjJGCVdCGHBI4PegDe8H/DH4kfFuXW9X8PaTe6vc6TAb7WUjDS3Ri3HzJgp+aQryzDO7ALdFYgA+sf2M/g5+1PNp0Wpf8E//ANo621q6uCrXng+08Y6lpGpwsfvt5FhcxmeHPygy7JHKkrBtIZgD+gf/AIIXfsE/tkfB7w1P+0P/AMFGNA8PWnjq6t2t/CXh6HU73VLzQLaQDz5ZJ7q8uYreeYBFaO1CfIv71pGISIA/Rnd7j86ADcfb86APL/hD+1v8JfjX8fvir+zf4L1UTeI/hDf6Va+KoQ4IU39kt3AVx/s70Po0bCgD1Dd9PzoANx9vzoAN3Pb86AEwf84oA+N/+Cw3hz/gpD4W/Z/1v9o3/gnx+2bpngK88D+H7rVPEPhXxX4X0u703UrO2ieaWWO6uLZ5baZY1Y/MzRNgD91y5AP5wP8Aglh+3l/wVS+IH/BSjUrf9lD9pfRvDnxQ/aN8RGLxX4g8U6XZyWF1PvluvMeKWCRIyn70RpEgPzCNBhgKAP6zP2cPh78ZPhn8JNM8LfHz4+3fxK8WRx79Z8VXOg2WmJcSkDcsNtZxokUQP3Qxd+fmduwB3eDQAy4tYby3ktLuBJYpUKSxSKCrqeCCD1BHagD8/P2hf+Da7/gm78SE8QeKvgF8J9N+GHjPxC+6fX7GK61LT4svvfGjz3QsHycEK8TRqRkJnBABjf8ABPf/AINtP2T/ANiz4xP8bfHuty/EjVLKC8i0WDxNYxTRme7Qx3eo3m8EXVzLGWjRNqQ28TsoSSVpLmQA/nx/4LzfBz9lX9n7/go94++E37KkenpYWev3t1rlnozg2OkXk07EaZbhPkVII1jYquPLknlhwPJAAB9Df8Gr/wCzt+yx+0V+3P4Sm+K9n4fvfE3gO+1nWYvDviFoz/bMUtjbpZTQRSfLO1lPDcyMnLqbqGVVKxSMgB+x/wC1X/wbkfs5/Hz9pDUP2mvhb8V/EHwz8Rarqk2rSah4ViiW4s9QmbfcPGzho5rWeTdJNZzxuDJJI8ckIkljlAPQ/wBk/wD4IJf8E+/2b/Gen/HLxl8JtO+IvxVtbv7XP8Q/FNpl5LoHKTxWIc2lu6kAq0cQZSMgjjAB9q49v0FABg+n6CgD48/4K/eGP+Cj2gfAPWf2hP8Agnv+2XpngDUPBWg3Wp694X8V+F9Lu9M1Ozt43mlkS5uLZ5bWZUVvvM0TbQCI+XoA/m4/4Jeft7/8FT/iB/wUr1CX9lb9pXRvD3xU/aM8QfZfFHiHxTpdnJYXUzSPcb3ilgkjj2YcRrFGDhhGg+YLQB/Wb+zX8O/jP8MfhHpnhf8AaB+P938S/FqJv1nxVcaBZaXHNKQMpDbWkaJFED90MXfk7nPAAB3uD6foKADB9P0FABj2/wDHaAPM/wBsL9mbQv2x/wBnXxH+zL4v8W6poug+MIIrLxHdaIypdzaf5yPcWsbsCI/OjVoWfBISV8DOCADxD4l/8EQ/+CffibwJ8PPD3wo+CmmfDnXvhFqlpqfwy8YeEbNYdQ0m7tp1uEM0h+a+ieRcypOzGTc7blc7wAe/+Ov2oP2d/hj8XvCfwA+IPxm8O6T428dPMnhHwte6iiXuqeVG8jmOLO7aFRgGOAWG0EsQCAd5j/O2gAx7f+O0AGPb/wAdoA+Gf+C/nxR/ae8Gfsf+GfhN+x34117w78QPi98TtM8DaNrmiTRwDTo7qK5uLm6nmaJ5IYo7a0nJkhaORPvh8IVIB/KH8XPhd/wkmvyeIPhhpl5LoV1a6pqHh+W+TbcXeiWLyRtq105zmS4miuAcniWNo1+Xy1AB6/8Asf8A7PWu23jrS/hh4j1K68I+JPEHiKy0rwh42sr1ra68KeKbu2F74dvluYypWx1GMmIsGwEQ3IOYYwQD+rr/AIJO/FHxz8a/+Cefwv8Aif8AE7XvE+oeJdS0DZ4ibxiIDf2+oQSyW11A7Qwwh1jnhlVWdTIyBS7uxLEA+icf520AGP8AO2gAwP8AK0AeW/tZ/AHwf+2l+z34t/Zc1v4hXel6R4ogj03xVP4fuEF59haVGubVWORCZoleEsVJCSsQM4IAPFfiX/wQ/wD+CfHif4c+APCPwq+CemfDrW/hLqlrqnwy8Y+EbRYdR0e9t51nR5ZTlr1HlQNKk5YybmO5XIcAH14oIAzjOOfloAMf520AGP8AO2gAzz1H50AHHt+dAHyz/wAFWvjN/wAFHfhb8G9B8Nf8Ey/2dtO8aeOfGevf2NLr+rX8aWnhGN4mcajNDJhZUG1xuZgiME3LJuEbAH852h+M/hR+yf8A8FrdS+Of7eX7Rmv/ABu8QfBXU01DxDe6azz3PjHxzAQINK08Pgx2treEKZHCpt09wEXzYYKAP6dP2B/2gPjd+1B+yr4X+OH7RP7Nmp/CXxVrsMs174J1e7E01pF5rCFycK674tjlJUjkUkhkGASAex556j86ADj2/OgDnPir8OdH+KfgfUfCepxW6z3Fhdw6dqEtsJH0+ae1mtjPHnlXEc8i5BBKuy5wxoA/mx/4Kw/sm+Hv2K/g5+1nq2k+HJLDStP8RfDf4HfDMTx4aLSbbSbPXr2UNj5nuZLO1mkcfeeWfP3yKAO3/wCCZ/7IGjf8FFj+zdp2pS3NjbeL/wBneW18V6rZ2+9rC/8ABXjS2Swvc5AEzae8dgrE8R3BAHFAH9Glhp2naVb/AGPS7GC2hDu4igjCLuZizHAGMliWJ7kk96AJuPb86AOa+L3xi+F/wC+HWqfFv4y+ONP8OeG9Gg87U9Y1OfZDAmQBk9SSSAAASSQACaAPlD/g4V+M37RXwI/4JFfFn4l/suX1/Y+JLews4LjV9JZhd6Zp095DFeXMJX5kZYHf94MGNWaQEFMgA/DOL9m/4Pfsw/sV+Gf+CzX/AARy/wCClWr2njfwXZaY3xh8AeMtfto9VGoTSRRXEYhRY/Pha4c/6PMkqTRbnSVyu0gH9LX7H3xu1T9pb9k/4Z/tE674c/se+8d+AdI1+80o7sWkt5ZxXDxDdyVVpCATzgCgD0bj2/OgAyPUfnQAHHfH50ALz6igA54+YUAMmj86F4TKV3qRuRsEZHUHtQB+XXwV/wCCN3/BPf8A4ISfC34qf8FKfiVFq3xZ8Y+EbbVfEeneIPFscb3FhHvd7e2tEO5Fu5C0cTXj5dnZmXylZkoA+Br/APau/wCC8Xx2/Y+8bf8ABc74gf8ABQKP4KeBNDvRJ8MPhtBagWPiUi6EItIrQjZLGW3RrLcCaSVo3JCxjzAAftP+wd/wUb+HP7SX7KXwH+KXxt8XeHPBnjv40eD/AO0NI8KX2ppbPql1b+Wl4LGOVt0qB5EdUBZgkqdcE0AfTQ/3hQAc/wB4fnQB+Y3/AAdjfsofEX9pL/glNe6t8IfCVxquo+A/H2neLNWsNMtTJcXFlFa3VlNIEUbn8tLtZG64jhY9FoA9B/4NqP2X/iH+zB/wSP8Aht4d+Mfg2fRPE+rvqesTadqNoYruztbu+llt4pAwDIWi8uUocFTJggEEUAffH4igBs9xBawNc3U6RxxqWkkdsKqjkkk9BjvQB8e/8FYP2ZrH9ov9mbXf2pPgJ4b8OeNPip8NfA2r3XwhXXbOLWdKtr9mt55bqCzfdBJqASzMdvMwby5H5BBYEA/Jr/gm/wD8HLvx9/Zz+H3g34Y/8FddKg+J3wo+Jej3P9hfEizaC+1S3tlme0urfUrUc3ccciujrIizbcsv2lHTIB9wfB7/AINxv+CB/wC1F4o0b9tn4BeHLjxJ4N1qcalp2geHvGLy+G7pw+WQw4MyKHBVrfzVVCDG0agFKAP1D07TrDSNPg0nSrKG2tbWFYba2t4wkcUajaqKo4VQAAAOBigCb8aAD8RQAc+ooATj+8fzoABj1P50AHbqfzoA4n9pL4AfDj9qv4CeL/2b/i5YS3PhrxroFzpGrx28uyVYpkK742wdsiEh1bBwyqcHFAH5E6f/AMGpf7Q3xK1zwV8Df2tf+CnuueMv2evhndO3g3wFY6Q9rdi2LlvIJMhigbDFPPxKwQlUEYI2gHmn/Bbn4u/sw/AT/guh+yb8MPHtzZeGfhL+zf8AD228TS6fZxAx2X2WS5urawgiz88kg0zT4Y0/iaVASBk0AfeP/BK/9r79vP47+BPid/wUy/b617Sfhp8BNY06TVvhd8O9R0mJLvRdEtoy7atc3e1ZSkkKFgr7vMLNIixxmMOAdJ/wSE/4LpfAf/gsB4i8feEvhT8IfFPhW98BiCe4fXJbeSG9tLiWaOCWNo23K5EJZo2QBdwAd+TQB9WftC/tIfAf9lD4Wah8bf2j/inpHg7wrphVbzWdauhHGHY4SNRy0kjHhY0DMx6A0AcH+xt/wUr/AGFv+CgVtqk37H37RuieNJdECtq2n2iT215aoxwsj21zHHMIyeBJs2E8ZzQB8CfGD/g7b+AGiXvie4/Zv/YQ+NPxI0HwFcrH4+8U/wBkrp1joaGUxB5WAnaLLqyqJxBuZSM8UAeSf8HJP7dNh+01/wAE/v2Vvjp8MvFnimy/Z2+LvjVZ/ieNKc217NaqImXT5thYeYqpqWY8uhltlb5timgD6G/YK8Af8E4v+CLX7Vnhz9kr4EftB/E3xR/w1XMmtfDjwrLMl/4f0jT47aSVLtZ8Lky7HTzgzu6mAOmE80gGN+xl/wAG7Pwc+EX/AAUe/aX+Ifx2/Zl8BeL/AIN+PYI3+Gba8RcXOmG9LzahaQWvKQRo8jRLOdsqrFF5RAaTAB+nXwm+Enww+BHw50f4Q/BvwPpnhrwxoFktpo+iaPbLDb2sK9FVV9TkknJYkkkkk0AdF8vr+tAB8vr+tAB8vr+tAB8vr+tACD/d/SgAB6cUAGRj7v6UAGR/d/SgAyP7v6UAfC37VP8Awb8fsR/tjf8ABQ3RP+ChfxwuPEWsanp8dt/bHge9uopdF1drWJY7TzIym9UTaGeIOY5SAGXBcOAeT/8ABxD8N/8Agol+2tpXgn/gmB+wr8F7+Hw343gl1b4ifEPUEltdBhtrMNJbaRLdRq3lmSSIOy4BYi3UEq0m0A+bf+DWzSviN4S/4KeftgeBPi58PPDvhLxLotppem6x4X8IsW0vS5rS6uLc29qWkkJhQIFXLscYyTQB0H/B5MNbj0r9lq78ZRXTfCuP4k3/APwnaIH8gzYsTAJNv8X2Yals748zFAHEfACH4F2//B3b4eb/AIJwv4UPw7n+Gkr+OV+GhtzoqwnQ5dw/0T9yF+0jTSQvHnFc/NmgDx34g/8ABOu68U/8HF3xr/4Jear+0x4y+Fvw1+P0kviy7s/BzKi+J42gfVVsXVyEEaSPqSqWV1BhxsOeAD9wfE3/AASr/Yu8Y/8ABPyw/wCCZ3iX4ZyXfwu0rRIdP060kuz9ttpImMiXqXGMrdeaWlMgGCzsCpRihAPiX9jj/gglov8AwTL/AOCl3w1+KvwE0rxN8WPDsWh3ljqHiX4mXkbN4DtGgvQJNPlheJHmd2hg8j7NIdlxM4eEE5AP1mz32/pQAZ/2entQAZ/2evtQAZ77f0oATtjb+lAC55ztP5UAJ+H/AI7QAfh/47QAdun/AI7QAfh/47QAfh/47QAfh/47QAfh/wCO0AYOkfCv4Y+H/G2o/EzQfhzoVj4j1e3WDVdftNHhjvb2JTuVJZ1UPIoJJAYkAnNAGT+0D+zp8Df2q/hZqPwS/aL+F2keMPCuqhft2i61aCSJ2U5SRTw0cinlZEKsp5BBoA8//Y0/4JofsLf8E+YdVT9j79nHRPBk2thV1bULZ57q8ukU5WNrm6kkm8sHkR79gPOM0Aevf8IF4G/4TJviKPBmlf8ACQPZJZvrv9mx/bGtlZmWEzbd5jDO5CZwC7HHJoA1vw/8doAPw/8AHaAD8P8Ax2gA/D/x2gA/D/x2gA/D/wAdoAPw/wDHaAD8P/HaAF/hH4UAA6j6UAJ/D/n0oAU9T9KAD/H+tAB/j/WgAHUfSgBP4f8APpQAp6n6UAA6/nQAtABQAUAFABQAUAFABQAUAf/Z';
+})();
+
+var DB = {
+  alunos: function() { return JSON.parse(localStorage.getItem('nv_al') || '[]'); },
+  saveA:  function(d) { localStorage.setItem('nv_al', JSON.stringify(d)); },
+  inat:   function() { return JSON.parse(localStorage.getItem('nv_in') || '[]'); },
+  saveI:  function(d) { localStorage.setItem('nv_in', JSON.stringify(d)); },
+  cfg:    function() { return JSON.parse(localStorage.getItem('nv_cfg') || '{}'); },
+  saveC:  function(o) { var a=DB.cfg(); Object.assign(a,o); localStorage.setItem('nv_cfg', JSON.stringify(a)); }
+};
+
+var PAGS = ['dashboard','alunos','inscricao','pagamentos','cobranca','relatorio','aniversarios','inativos','config'];
+
+function ir(p) {
+  document.querySelectorAll('.pag').forEach(function(x){ x.classList.remove('show'); });
+  document.querySelectorAll('nav button').forEach(function(x){ x.classList.remove('on'); });
+  document.getElementById('pg-'+p).classList.add('show');
+  document.querySelectorAll('nav button')[PAGS.indexOf(p)].classList.add('on');
+  if(p==='dashboard') renderDash();
+  if(p==='alunos') renderAlunos();
+  if(p==='pagamentos') renderPagamentos();
+  if(p==='cobranca') renderCobr();
+  if(p==='inativos') renderInat();
+  if(p==='config') renderConfig();
+  if(p==='relatorio') renderRelatorio();
+  if(p==='aniversarios') renderAniversarios();
+}
+
+function getCategoria(nasc) {
+  var a = new Date(nasc).getFullYear();
+  if(a>=2010 && a<=2012) return 'Infantil';
+  if(a>=2013 && a<=2014) return 'Mirim';
+  if(a>=2015 && a<=2020) return 'Iniciacao';
+  return 'Fora de faixa';
+}
+
+function nomeCat(c) {
+  if(c==='Iniciacao') return 'Iniciação';
+  return c;
+}
+
+function bcat(c) {
+  var cls = {Infantil:'bi',Mirim:'bm',Iniciacao:'bn'};
+  return '<span class="badge '+(cls[c]||'bx')+'">'+nomeCat(c)+'</span>';
+}
+
+function fdata(s) {
+  if(!s) return '-';
+  var p=s.split('-');
+  return p[2]+'/'+p[1]+'/'+p[0];
+}
+
+function moeda(v) {
+  return 'R$ '+Number(v||0).toFixed(2).replace('.',',');
+}
+
+function renderDash() {
+  var todos=DB.alunos();
+  var pend=todos.filter(function(a){return a.sit==='Pendente';});
+  var pgos=todos.filter(function(a){return a.sit==='Pago';});
+  var tm=todos.reduce(function(s,a){return s+(a.mens||0);},0);
+  var _av = alertaVencimento(); if(_av){var _avel=document.createElement('div');_avel.innerHTML=_av;var _avp=document.getElementById('ctopo').parentNode;_avp.insertBefore(_avel.firstChild,document.getElementById('ctopo'));}
+  document.getElementById('ctopo').innerHTML=
+    '<div class="card"><div class="cl">Total de Alunos</div><div class="cv cg">'+todos.length+'</div><div class="cs">matriculas ativas</div></div>'+
+    '<div class="card"><div class="cl">Mensalidade/mes</div><div class="cv">R$ '+tm.toFixed(0)+'</div><div class="cs">valor esperado</div></div>'+
+    '<div class="card"><div class="cl">Mensalidades Pagas</div><div class="cv cg">'+pgos.length+'</div><div class="cs">alunos em dia</div></div>'+
+    '<div class="card"><div class="cl">Em Aberto</div><div class="cv cr">'+pend.length+'</div><div class="cs">com pendencia</div></div>';
+  document.getElementById('n-inf').textContent=todos.filter(function(a){return a.cat==='Infantil';}).length;
+  document.getElementById('n-mir').textContent=todos.filter(function(a){return a.cat==='Mirim';}).length;
+  document.getElementById('n-ini').textContent=todos.filter(function(a){return a.cat==='Iniciacao';}).length;
+  var tb=document.getElementById('tb-dash');
+  if(!pend.length){tb.innerHTML='<tr><td colspan="4" class="tvz">Nenhuma pendencia no momento.</td></tr>';return;}
+  tb.innerHTML=pend.map(function(a){
+    return '<tr><td><strong>'+a.nome+'</strong></td><td>'+bcat(a.cat)+'</td><td>'+moeda(a.mens)+'</td><td><span class="badge bpd">Pendente</span></td></tr>';
+  }).join('');
+}
+
+function renderAlunos() {
+  var d=DB.alunos();
+  var b=(document.getElementById('busca').value||'').toLowerCase();
+  var fc=document.getElementById('fil-cat').value;
+  var fs=document.getElementById('fil-sit').value;
+  if(b) d=d.filter(function(a){return a.nome.toLowerCase().indexOf(b)>=0;});
+  if(fc) d=d.filter(function(a){return nomeCat(a.cat)===fc;});
+  if(fs) d=d.filter(function(a){return a.sit===fs;});
+  var tb=document.getElementById('tb-alunos');
+  if(!d.length){tb.innerHTML='<tr><td colspan="7" class="tvz">Nenhum aluno encontrado.</td></tr>';return;}
+  tb.innerHTML=d.map(function(a){
+    var sc=a.sit==='Pago'?'bpg':'bpd';
+    return '<tr>'+
+      '<td><strong>'+a.nome+'</strong></td>'+
+      '<td style="font-size:12px;color:var(--ci)">'+fdata(a.nasc)+'</td>'+
+      '<td>'+bcat(a.cat)+'</td>'+
+      '<td style="font-size:12px">'+a.treino+'</td>'+
+      '<td>'+moeda(a.mens)+'</td>'+
+      '<td><select class="badge '+sc+'" onchange="trocarSit(\''+a.id+'\',this)" style="border:none;cursor:pointer;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600">'+
+        '<option'+(a.sit!=='Pago'?' selected':'')+'>Pendente</option>'+
+        '<option'+(a.sit==='Pago'?' selected':'')+'>Pago</option>'+
+      '</select></td>'+
+      '<td><div style="display:flex;gap:6px">'+
+        '<button class="btn bo bsm" onclick="verDet(\''+a.id+'\')">Ver</button>'+
+        '<button class="btn bam bsm" onclick="abrirEditar(\''+a.id+'\')">Editar</button>'+
+        '<button class="btn br2 bsm" onclick="abrirDesl(\''+a.id+'\')">Desligar</button>'+
+      '</div></td>'+
+    '</tr>';
+  }).join('');
+}
+
+function trocarSit(id,sel) {
+  var d=DB.alunos();
+  var i=d.findIndex(function(a){return a.id===id;});
+  if(i<0) return;
+  d[i].sit=sel.value;
+  sel.className='badge '+(sel.value==='Pago'?'bpg':'bpd');
+  DB.saveA(d);
+}
+
+function verDet(id) {
+  var a=DB.alunos().find(function(x){return x.id===id;});
+  if(!a) return;
+  document.getElementById('det-nome').textContent=a.nome;
+  document.getElementById('det-corpo').innerHTML=
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px">'+
+    '<div><strong>Categoria</strong><br>'+bcat(a.cat)+'</div>'+
+    '<div><strong>Nascimento</strong><br>'+fdata(a.nasc)+'</div>'+
+    '<div><strong>Posicao</strong><br>'+(a.pos||'-')+'</div>'+
+    '<div><strong>Treino</strong><br>'+a.treino+'</div>'+
+    '<div><strong>Peso</strong><br>'+(a.peso?a.peso+' kg':'-')+'</div>'+
+    '<div><strong>Altura</strong><br>'+(a.alt?a.alt+' cm':'-')+'</div>'+
+    '<div><strong>RG</strong><br>'+(a.rg||'-')+'</div>'+
+    '<div><strong>CPF</strong><br>'+(a.cpf||'-')+'</div>'+
+    '<div><strong>Pai</strong><br>'+(a.pai||'-')+'</div>'+
+    '<div><strong>Mae</strong><br>'+(a.mae||'-')+'</div>'+
+    '<div><strong>Contato</strong><br>'+(a.contato||'-')+'</div>'+
+    '<div><strong>Pagamento</strong><br>'+(a.pgto||'-')+'</div>'+
+    '<div><strong>Mensalidade</strong><br>'+moeda(a.mens)+'</div>'+
+    '<div><strong>Situacao</strong><br><span class="badge '+(a.sit==='Pago'?'bpg':'bpd')+'">'+a.sit+'</span></div>'+
+    (a.desc2?'<div style="grid-column:span 2;color:var(--g);font-size:12px">Desconto 10% aplicado (2o aluno)</div>':'')+
+    '<div><strong>Inicio</strong><br>'+(a.inicio?fdata(a.inicio):'-')+'</div>'+
+    '<div><strong>Camiseta</strong><br>'+(a.camisa||'-')+'</div>'+
+    '<div><strong>Blusa</strong><br>'+(a.blusa||'-')+'</div>'+
+    '<div><strong>Garrafinha</strong><br>'+(a.garrafa||'-')+'</div>'+
+    '</div>';
+  document.getElementById('ov-det').style.display='flex';
+}
+
+function calcMensInicio() {
+  var inicio = document.getElementById('f-inicio').value;
+  var aviso = document.getElementById('inicio-aviso');
+  if (!inicio) { aviso.style.display='none'; return; }
+  var d = new Date(inicio);
+  var mesInicio = d.getMonth();
+  var anoInicio = d.getFullYear();
+  var nomesMes = ['Janeiro','Fevereiro','Marco','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  var ignorados = [];
+  for (var m=0; m<mesInicio; m++) {
+    ignorados.push(nomesMes[m] + '/' + anoInicio);
+  }
+  if (ignorados.length > 0) {
+    aviso.style.display = 'block';
+    aviso.textContent = 'A cobranca comecara em ' + nomesMes[mesInicio] + '/' + anoInicio + '. Meses anteriores (' + ignorados.join(', ') + ') nao serao cobrados.';
+  } else {
+    aviso.style.display = 'none';
+  }
+}
+
+function getMesInicioAluno(a) {
+  if (!a.inicio) return { mes: 0, ano: 0 };
+  var d = new Date(a.inicio);
+  return { mes: d.getMonth(), ano: d.getFullYear() };
+}
+
+function deveCobraMes(a, mesIdx, ano) {
+  if (!a.inicio) return true;
+  var d = new Date(a.inicio);
+  var anoIn = d.getFullYear();
+  var mesIn = d.getMonth();
+  if (ano < anoIn) return false;
+  if (ano === anoIn && mesIdx < mesIn) return false;
+  return true;
+}
+
+function detectarCat() {
+  var v=document.getElementById('f-nasc').value;
+  if(!v) return;
+  document.getElementById('f-cat').value=nomeCat(getCategoria(v));
+  calcMens();
+}
+
+function toggleParc() {
+  var pgto=document.getElementById('f-pgto').value;
+  document.getElementById('bloco-parc').style.display=(pgto==='credito')?'flex':'none';
+  if(pgto!=='credito') document.getElementById('f-parc').selectedIndex=0;
+}
+
+function calcMens() {
+  var t=document.getElementById('f-treino').value;
+  var ir=document.getElementById('f-irmao').value;
+  var r=document.getElementById('res-mens');
+  if(!t){r.style.display='none';return;}
+  var m=(t==='sabado')?120:150;
+  var desc=0;
+  if(ir==='sim'&&t!=='sabado'){desc=m*0.1;m-=desc;}
+  r.style.display='block';
+  r.innerHTML='<p><strong>Resumo de valores</strong></p>'+
+    '<p style="margin-top:6px">Inscricao: R$ 100,00 (unica vez)</p>'+
+    '<p>Uniforme: R$ 150,00 (unica vez)</p>'+
+    '<p>Mensalidade base: '+(t==='sabado'?'R$ 120,00':'R$ 150,00')+'</p>'+
+    (desc>0?'<p style="color:var(--g)">Desconto 2o aluno: - R$ '+desc.toFixed(2).replace('.',',')+'</p>':'')+
+    '<p style="margin-top:8px;font-size:15px"><strong>Mensalidade final: '+moeda(m)+'/mes</strong></p>';
+}
+
+function limparForm() {
+  ['f-nome','f-nasc','f-cat','f-peso','f-alt','f-rg','f-cpf','f-pai','f-mae','f-contato','f-inicio','f-camisa','f-blusa','f-garrafa'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('inicio-aviso').style.display='none';
+  ['f-pos','f-treino','f-irmao','f-pgto','f-parc'].forEach(function(id){document.getElementById(id).selectedIndex=0;});
+  document.getElementById('f-sit').value='Pendente';
+  document.getElementById('res-mens').style.display='none';
+  document.getElementById('bloco-parc').style.display='none';
+}
+
+function salvarAluno() {
+  var nome=document.getElementById('f-nome').value.trim();
+  var nasc=document.getElementById('f-nasc').value;
+  var catv=getCategoria(nasc);
+  var pos=document.getElementById('f-pos').value;
+  var trn=document.getElementById('f-treino').value;
+  if(!nome||!nasc||!trn||!pos){alert('Preencha: nome, nascimento, posicao e treino.');return;}
+  if(catv==='Fora de faixa'){alert('Ano de nascimento fora das categorias (2010-2020).');return;}
+  var irel=document.getElementById('f-irmao').value;
+  var m=(trn==='sabado')?120:150;
+  if(irel==='sim'&&trn!=='sabado') m=m*0.9;
+  var pgtoEl=document.getElementById('f-pgto');
+  var pgtoTxt=pgtoEl.options[pgtoEl.selectedIndex].text;
+  if(pgtoEl.value==='credito'){pgtoTxt='Cartao de credito - '+document.getElementById('f-parc').value+'x';}
+  var aluno={
+    id:Date.now().toString(),nome:nome,nasc:nasc,cat:catv,pos:pos,
+    treino:(trn==='sabado')?'Somente Sab':'Ter / Qui / Sab',
+    peso:document.getElementById('f-peso').value,
+    alt:document.getElementById('f-alt').value,
+    rg:document.getElementById('f-rg').value.trim(),
+    cpf:document.getElementById('f-cpf').value.trim(),
+    pai:document.getElementById('f-pai').value.trim(),
+    mae:document.getElementById('f-mae').value.trim(),
+    contato:document.getElementById('f-contato').value.trim(),
+    pgto:pgtoTxt,sit:document.getElementById('f-sit').value,
+    mens:m,desc2:(irel==='sim'),
+    criadoEm:new Date().toLocaleDateString('pt-BR')
+  };
+  var d=DB.alunos(); d.push(aluno); DB.saveA(d);
+  alert('Aluno '+nome+' matriculado!\nCategoria: '+nomeCat(catv)+'\nMensalidade: '+moeda(m));
+  limparForm();
+  ir('alunos');
+}
+
+function abrirDesl(id) {
+  document.getElementById('id-desl').value=id;
+  document.getElementById('mot-desl').value='';
+  document.getElementById('ov-desl').style.display='flex';
+}
+
+function confirmarDesl() {
+  var id=document.getElementById('id-desl').value;
+  var mot=document.getElementById('mot-desl').value.trim()||'Nao informado';
+  var d=DB.alunos();
+  var i=d.findIndex(function(a){return a.id===id;});
+  if(i<0) return;
+  var aluno=d.splice(i,1)[0];
+  DB.saveA(d);
+  var inat=DB.inat();
+  aluno.motivo=mot;
+  aluno.desligadoEm=new Date().toLocaleDateString('pt-BR');
+  inat.push(aluno);
+  DB.saveI(inat);
+  document.getElementById('ov-desl').style.display='none';
+  renderAlunos();
+  alert(aluno.nome+' foi desligado.');
+}
+
+function getMsg(a) {
+  return '📢 AVISO DE MENSALIDADE\n\n' +
+    'Olá, tudo bem?\n\n' +
+    'A Escola de Futebol Nova Opção informa que a mensalidade do(a) aluno(a) *' + a.nome + '* está em aberto.\n\n' +
+    'Pedimos, por gentileza, que o pagamento seja realizado o quanto antes para evitar o acúmulo de pendências e garantir a continuidade das atividades e treinamentos.\n\n' +
+    'Caso o pagamento já tenha sido efetuado, desconsidere esta mensagem.\n\n' +
+    'Em caso de dúvidas, entre em contato conosco.\n\n' +
+    'Agradecemos pela confiança e parceria!\n' +
+    'Escola de Futebol Nova Opção ⚽';
+}
+
+function renderCobr() {
+  var pend=DB.alunos().filter(function(a){return a.sit==='Pendente';});
+  var el=document.getElementById('lista-cobr');
+  if(!pend.length){el.innerHTML='<div class="info" style="text-align:center">Nenhuma mensalidade pendente.</div>';return;}
+  el.innerHTML=pend.map(function(a){
+    return '<div class="cobr">'+
+      '<div><h4>'+a.nome+'</h4><p>'+nomeCat(a.cat)+' / '+a.treino+' / '+(a.contato||'Sem contato')+'</p></div>'+
+      '<div class="cv2">'+moeda(a.mens)+'</div>'+
+      '<div class="cac">'+
+        '<button class="btn bam bsm" onclick="notifUm(\''+a.id+'\')">Notificar</button>'+
+        '<button class="btn bv bsm" onclick="marcarPago(\''+a.id+'\')">Pago</button>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+function marcarPago(id) {
+  var d=DB.alunos();
+  var i=d.findIndex(function(a){return a.id===id;});
+  if(i<0) return;
+  d[i].sit='Pago'; DB.saveA(d); renderCobr();
+}
+
+function notifUm(id) {
+  var a = DB.alunos().find(function(x){ return x.id === id; });
+  if (!a) return;
+  var contato = a.contato ? '\n📞 Contato: ' + a.contato : '';
+  document.getElementById('txt-notif').value = getMsg(a) + contato;
+  document.getElementById('ov-notif').style.display = 'flex';
+}
+
+function notifTodos() {
+  document.getElementById('ov-sel-aluno').style.display = 'flex';
+  renderSelAlunos();
+  selSoPendentes();
+}
+
+function msgCobrancaGeral() {
+  document.getElementById('ov-sel-aluno').style.display = 'flex';
+  renderSelAlunos();
+}
+
+function copiarNotif() {
+  var t=document.getElementById('txt-notif');
+  t.select(); document.execCommand('copy');
+  alert('Texto copiado!');
+}
+
+function renderInat() {
+  var d=DB.inat();
+  var tb=document.getElementById('tb-inat');
+  if(!d.length){tb.innerHTML='<tr><td colspan="5" class="tvz">Nenhum ex-aluno registrado.</td></tr>';return;}
+  tb.innerHTML=d.map(function(a){
+    return '<tr>'+
+      '<td><strong>'+a.nome+'</strong></td>'+
+      '<td><span class="badge bx">'+nomeCat(a.cat)+'</span></td>'+
+      '<td style="font-size:12px">'+(a.contato||'-')+'</td>'+
+      '<td style="font-size:12px;color:var(--ci)">'+a.motivo+'</td>'+
+      '<td style="font-size:12px">'+a.desligadoEm+'</td>'+
+    '</tr>';
+  }).join('');
+}
+
+function renderConfig() {
+  var cfg=DB.cfg();
+  var grid=document.getElementById('dgrid');
+  grid.innerHTML='';
+  for(var d=1;d<=28;d++){
+    var btn=document.createElement('button');
+    btn.className='db'+(cfg.vencimento==d?' sel':'');
+    btn.textContent=d;
+    btn.setAttribute('data-dia',d);
+    (function(dia){btn.onclick=function(){selecionarDia(dia);};})(d);
+    grid.appendChild(btn);
+  }
+  if(cfg.pix) document.getElementById('cfg-pix').value=cfg.pix;
+  if(cfg.telefone) document.getElementById('cfg-tel').value=cfg.telefone;
+}
+
+function selecionarDia(d) {
+  DB.saveC({vencimento:d});
+  document.querySelectorAll('.db').forEach(function(b){
+    b.classList.toggle('sel',parseInt(b.getAttribute('data-dia'))===d);
+  });
+  var ok=document.getElementById('cfg-ok');
+  ok.style.display='block';
+  ok.textContent='Vencimento definido para o dia '+d+' de cada mes.';
+}
+
+function salvarCfg() {
+  DB.saveC({
+    pix:document.getElementById('cfg-pix').value,
+    telefone:document.getElementById('cfg-tel').value
+  });
+}
+
+
+function selecionarTipo(tipo) {
+  ['completa','mensalidade','uniforme'].forEach(function(t) {
+    document.getElementById('tipo-'+t).classList.remove('on');
+    document.getElementById('bloco-'+t).style.display = 'none';
+  });
+  document.getElementById('tipo-'+tipo).classList.add('on');
+  document.getElementById('bloco-'+tipo).style.display = 'block';
+  if(tipo === 'mensalidade') preencherSelectAlunos('pm-aluno');
+  if(tipo === 'uniforme') preencherSelectAlunos('un-aluno');
+}
+
+function preencherSelectAlunos(selectId) {
+  var sel = document.getElementById(selectId);
+  var atual = sel.value;
+  sel.innerHTML = '<option value="">Selecionar aluno...</option>';
+  DB.alunos().forEach(function(a) {
+    var opt = document.createElement('option');
+    opt.value = a.id;
+    opt.textContent = a.nome + ' (' + nomeCat(a.cat) + ')';
+    sel.appendChild(opt);
+  });
+  if(atual) sel.value = atual;
+}
+
+function carregarDadosMens() {
+  var id = document.getElementById('pm-aluno').value;
+  var info = document.getElementById('pm-info');
+  if(!id) { document.getElementById('pm-valor').value = ''; info.style.display='none'; return; }
+  var a = DB.alunos().find(function(x){ return x.id === id; });
+  if(!a) return;
+  document.getElementById('pm-valor').value = moeda(a.mens);
+  info.style.display = 'block';
+  info.textContent = 'Categoria: ' + nomeCat(a.cat) + ' | Treino: ' + a.treino + ' | Situacao atual: ' + a.sit;
+}
+
+function toggleParcMens() {
+  var v = document.getElementById('pm-pgto').value;
+  document.getElementById('bloco-parc-mens').style.display = (v==='credito') ? 'flex' : 'none';
+  if(v!=='credito') document.getElementById('pm-parc').selectedIndex = 0;
+}
+
+function registrarMensalidade() {
+  var id  = document.getElementById('pm-aluno').value;
+  var mes = document.getElementById('pm-mes').value.trim();
+  var pgtoEl = document.getElementById('pm-pgto');
+  var pgto = pgtoEl.options[pgtoEl.selectedIndex].text;
+  if(!id) { alert('Selecione o aluno.'); return; }
+  if(!mes) { alert('Informe o mes de referencia.'); return; }
+  if(!pgtoEl.value) { alert('Selecione a forma de pagamento.'); return; }
+  if(pgtoEl.value === 'credito') pgto = 'Cartao de credito - ' + document.getElementById('pm-parc').value + 'x';
+  var d = DB.alunos();
+  var i = d.findIndex(function(a){ return a.id === id; });
+  if(i < 0) return;
+  d[i].sit = 'Pago';
+  DB.saveA(d);
+  alert('Pagamento registrado! Aluno: ' + d[i].nome + ' | ' + mes + ' | ' + pgto);
+  document.getElementById('pm-aluno').value = '';
+  document.getElementById('pm-mes').value = '';
+  document.getElementById('pm-valor').value = '';
+  document.getElementById('pm-pgto').selectedIndex = 0;
+  document.getElementById('pm-info').style.display = 'none';
+  document.getElementById('bloco-parc-mens').style.display = 'none';
+}
+
+function calcUnif() {
+  var qtd = parseInt(document.getElementById('un-qtd').value) || 1;
+  document.getElementById('un-valor').value = moeda(qtd * 150);
+}
+
+function toggleParcUnif() {
+  var v = document.getElementById('un-pgto').value;
+  document.getElementById('bloco-parc-unif').style.display = (v==='credito') ? 'flex' : 'none';
+  if(v!=='credito') document.getElementById('un-parc').selectedIndex = 0;
+}
+
+function registrarUniforme() {
+  var id   = document.getElementById('un-aluno').value;
+  var tam  = document.getElementById('un-tam').value;
+  var qtd  = document.getElementById('un-qtd').value;
+  var pgtoEl = document.getElementById('un-pgto');
+  var pgto = pgtoEl.options[pgtoEl.selectedIndex].text;
+  if(!id) { alert('Selecione o aluno.'); return; }
+  if(!tam) { alert('Selecione o tamanho.'); return; }
+  if(!pgtoEl.value) { alert('Selecione a forma de pagamento.'); return; }
+  if(pgtoEl.value === 'credito') pgto = 'Cartao de credito - ' + document.getElementById('un-parc').value + 'x';
+  var a = DB.alunos().find(function(x){ return x.id === id; });
+  var nome = a ? a.nome : 'Aluno';
+  var valor = moeda(parseInt(qtd) * 150);
+  alert('Uniforme registrado! Aluno: ' + nome + ' | ' + qtd + 'x | Tam: ' + tam + ' | ' + valor + ' | ' + pgto);
+  document.getElementById('un-aluno').value = '';
+  document.getElementById('un-qtd').selectedIndex = 0;
+  document.getElementById('un-valor').value = 'R$ 150,00';
+  document.getElementById('un-tam').selectedIndex = 0;
+  document.getElementById('un-pgto').selectedIndex = 0;
+  document.getElementById('bloco-parc-unif').style.display = 'none';
+}
+
+
+var MESES = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+function getMesesAluno(id) {
+  var hist = JSON.parse(localStorage.getItem('nv_hist') || '[]');
+  var pagos = {};
+  hist.filter(function(h){ return h.id === id; }).forEach(function(h){
+    pagos[h.mes] = h.pgto;
+  });
+  return pagos;
+}
+
+function renderPagamentos() {
+  var todos = DB.alunos();
+  var filtroEl = document.getElementById('pag-filtro');
+  var filtro = filtroEl ? filtroEl.value : 'todos';
+  if (filtro === 'pendente') todos = todos.filter(function(a){ return a.sit === 'Pendente'; });
+  if (filtro === 'pago')     todos = todos.filter(function(a){ return a.sit === 'Pago'; });
+
+  var el = document.getElementById('lista-pag-cards');
+  var pendN  = DB.alunos().filter(function(a){ return a.sit === 'Pendente'; }).length;
+  var emDiaN = DB.alunos().filter(function(a){ return a.sit === 'Pago'; }).length;
+  document.getElementById('pag-resumo-tit').innerHTML =
+    '<span style="color:var(--g);font-weight:700">' + emDiaN + ' em dia</span>&nbsp;&middot;&nbsp;' +
+    '<span style="color:var(--r);font-weight:700">' + pendN + ' pendentes</span>';
+
+  if (!todos.length) {
+    el.innerHTML = '<div class="info" style="text-align:center">Nenhum aluno encontrado.</div>';
+    return;
+  }
+
+  var anoAtual = new Date().getFullYear();
+  var mesAtual = new Date().getMonth();
+  el.innerHTML = '';
+
+  for (var x = 0; x < todos.length; x++) {
+    var a = todos[x];
+    var pagos = getMesesAluno(a.id);
+    var emDia = a.sit === 'Pago';
+
+    var card = document.createElement('div');
+    card.className = 'al-card';
+
+    var hdr = document.createElement('div');
+    hdr.className = 'al-header';
+    hdr.setAttribute('data-aid', a.id);
+    (function(aid) {
+      hdr.onclick = function() {
+        var body = document.getElementById('cb-' + aid);
+        if (body) body.style.display = body.style.display === 'none' ? 'block' : 'none';
+      };
+    })(a.id);
+
+    var infoDiv = document.createElement('div');
+    infoDiv.innerHTML = '<div class="al-nome">' + a.nome + '</div>' +
+      '<div class="al-sub">' + nomeCat(a.cat) + ' &middot; ' + a.treino + ' &middot; ' + moeda(a.mens) + '/mes</div>';
+
+    var rightDiv = document.createElement('div');
+    rightDiv.style.cssText = 'display:flex;align-items:center;gap:10px';
+    var badge = document.createElement('span');
+    badge.className = emDia ? 'al-status-verde' : 'al-status-verm';
+    badge.innerHTML = emDia ? '&#10003; Em dia' : '&#9679; Pendente';
+    var seta = document.createElement('span');
+    seta.style.cssText = 'color:var(--ci);font-size:16px';
+    seta.textContent = '▾';
+    rightDiv.appendChild(badge);
+    rightDiv.appendChild(seta);
+    hdr.appendChild(infoDiv);
+    hdr.appendChild(rightDiv);
+
+    var body = document.createElement('div');
+    body.id = 'cb-' + a.id;
+    body.style.display = 'none';
+
+    var grid = document.createElement('div');
+    grid.className = 'meses-grid';
+    for (var mi = 0; mi < 12; mi++) {
+      var chave = MESES[mi] + '/' + anoAtual;
+      var box = document.createElement('div');
+      if (pagos[chave]) {
+        box.className = 'mes-box mes-pago';
+        box.innerHTML = '<div class="mes-icon">&#10003;</div>' + MESES[mi] + '<div style="font-size:10px;margin-top:2px;font-weight:400">Pago</div>';
+      } else if (mi < mesAtual && deveCobraMes(a, mi, anoAtual)) {
+        box.className = 'mes-box mes-pend';
+        box.innerHTML = '<div class="mes-icon">!</div>' + MESES[mi] + '<div style="font-size:10px;margin-top:2px;font-weight:400">Pendente</div>';
+      } else if (mi < mesAtual && !deveCobraMes(a, mi, anoAtual)) {
+        box.className = 'mes-box mes-vazio';
+        box.innerHTML = '<div class="mes-icon">-</div>' + MESES[mi] + '<div style="font-size:10px;margin-top:2px;font-weight:400;color:#9ca3af">N/A</div>';
+      } else {
+        box.className = 'mes-box mes-vazio';
+        box.innerHTML = '<div class="mes-icon">-</div>' + MESES[mi];
+      }
+      grid.appendChild(box);
+    }
+
+    var acoes = document.createElement('div');
+    acoes.style.cssText = 'padding:12px 18px;border-top:1px solid var(--bd);display:flex;gap:8px;flex-wrap:wrap';
+
+    var btnPag = document.createElement('button');
+    btnPag.className = 'btn bv bsm';
+    btnPag.innerHTML = '&#10003; Registrar Pagamento';
+    btnPag.setAttribute('data-id', a.id);
+    btnPag.onclick = function(e) { e.stopPropagation(); abrirModalPag(this); };
+    acoes.appendChild(btnPag);
+
+    if (emDia) {
+      var btnVolt = document.createElement('button');
+      btnVolt.className = 'btn bo bsm';
+      btnVolt.textContent = 'Voltar para Pendente';
+      (function(aid) {
+        btnVolt.onclick = function(e) { e.stopPropagation(); voltarPendente(aid); };
+      })(a.id);
+      acoes.appendChild(btnVolt);
+    }
+
+    body.appendChild(grid);
+    body.appendChild(acoes);
+    card.appendChild(hdr);
+    card.appendChild(body);
+    el.appendChild(card);
+  }
+}
+
+function toggleCard(id) {
+  var el = document.getElementById('card-' + id);
+  if (!el) return;
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function voltarPendente(id) {
+  var d = DB.alunos();
+  var i = d.findIndex(function(a){ return a.id === id; });
+  if (i < 0) return;
+  d[i].sit = 'Pendente';
+  DB.saveA(d);
+  renderPagamentos();
+}
+
+function abrirModalPag(btn) {
+  var id = btn.getAttribute('data-id');
+  var a = DB.alunos().find(function(x){ return x.id === id; });
+  if (!a) return;
+  document.getElementById('pag-id-aluno').value = id;
+  var _mn=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']; var _d=new Date();
+  document.getElementById('pag-mes').value = _mn[_d.getMonth()] + '/' + _d.getFullYear();
+  document.getElementById('pag-pgto').selectedIndex = 0;
+  document.getElementById('pag-parc').selectedIndex = 0;
+  document.getElementById('bloco-parc-pag').style.display = 'none';
+  document.getElementById('ov-pag-info').innerHTML =
+    '<strong>' + a.nome + '</strong> &mdash; ' + nomeCat(a.cat) + '<br>' +
+    'Valor da mensalidade: <strong>' + moeda(a.mens) + '</strong>';
+  document.getElementById('ov-pag').style.display = 'flex';
+}
+
+function toggleParcPag() {
+  var v = document.getElementById('pag-pgto').value;
+  document.getElementById('bloco-parc-pag').style.display = (v === 'credito') ? 'flex' : 'none';
+  if (v !== 'credito') document.getElementById('pag-parc').selectedIndex = 0;
+}
+
+function confirmarPagamento() {
+  var id     = document.getElementById('pag-id-aluno').value;
+  var mes    = document.getElementById('pag-mes').value.trim();
+  var pgtoEl = document.getElementById('pag-pgto');
+  var pgtoV  = pgtoEl.value;
+  var pgtoT  = pgtoEl.options[pgtoEl.selectedIndex].text;
+
+  if (!mes)   { alert('Informe o mes de referencia.'); return; }
+  if (!pgtoV) { alert('Selecione a forma de pagamento.'); return; }
+  if (pgtoV === 'credito') {
+    pgtoT = 'Credito ' + document.getElementById('pag-parc').value + 'x';
+  }
+
+  var d = DB.alunos();
+  var i = d.findIndex(function(a){ return a.id === id; });
+  if (i < 0) return;
+
+  var nome  = d[i].nome;
+  var valor = d[i].mens;
+  d[i].sit  = 'Pago';
+  DB.saveA(d);
+
+  var hist = JSON.parse(localStorage.getItem('nv_hist') || '[]');
+  hist.unshift({ id: id, nome: nome, cat: d[i].cat, mes: mes, valor: valor, pgto: pgtoT, data: new Date().toLocaleDateString('pt-BR') });
+  localStorage.setItem('nv_hist', JSON.stringify(hist));
+
+  document.getElementById('ov-pag').style.display = 'none';
+  renderPagamentos();
+  alert(nome + ' agora esta EM DIA! ' + mes + ' registrado via ' + pgtoT + '.');
+}
+
+
+
+
+function abrirEditar(id) {
+  var a = DB.alunos().find(function(x){ return x.id === id; });
+  if (!a) return;
+
+  document.getElementById('edit-id').value = id;
+  document.getElementById('edit-titulo').textContent = 'Editar — ' + a.nome;
+  document.getElementById('edit-nome').value = a.nome || '';
+  document.getElementById('edit-pos').value = a.pos || '';
+  document.getElementById('edit-peso').value = a.peso || '';
+  document.getElementById('edit-alt').value = a.alt || '';
+  document.getElementById('edit-contato').value = a.contato || '';
+  document.getElementById('edit-pai').value = a.pai || '';
+  document.getElementById('edit-mae').value = a.mae || '';
+
+  var treinoAtual = (a.treino === 'Somente Sab') ? 'sabado' : '3dias';
+  document.getElementById('edit-treino').value = treinoAtual;
+
+  document.getElementById('edit-inicio').value  = a.inicio  || '';
+  document.getElementById('edit-camisa').value  = a.camisa  || '';
+  document.getElementById('edit-blusa').value   = a.blusa   || '';
+  document.getElementById('edit-garrafa').value = a.garrafa || '';
+  calcEditMens();
+  document.getElementById('ov-editar').style.display = 'flex';
+}
+
+function calcEditMens() {
+  var t = document.getElementById('edit-treino').value;
+  var id = document.getElementById('edit-id').value;
+  var a = DB.alunos().find(function(x){ return x.id === id; });
+  var novoMens = (t === 'sabado') ? 120 : 150;
+  if (a && a.desc2 && t !== 'sabado') novoMens = novoMens * 0.9;
+  var novoTreino = (t === 'sabado') ? 'Somente Sab' : 'Ter / Qui / Sab';
+  var res = document.getElementById('edit-resumo');
+  res.innerHTML = 'Treino: <strong>' + novoTreino + '</strong> &nbsp;&mdash;&nbsp; Nova mensalidade: <strong>' + moeda(novoMens) + '/mes</strong>';
+}
+
+function salvarEdicao() {
+  var id = document.getElementById('edit-id').value;
+  var d  = DB.alunos();
+  var i  = d.findIndex(function(a){ return a.id === id; });
+  if (i < 0) return;
+
+  var t = document.getElementById('edit-treino').value;
+  var novoMens = (t === 'sabado') ? 120 : 150;
+  if (d[i].desc2 && t !== 'sabado') novoMens = novoMens * 0.9;
+
+  d[i].nome    = document.getElementById('edit-nome').value.trim() || d[i].nome;
+  d[i].pos     = document.getElementById('edit-pos').value;
+  d[i].peso    = document.getElementById('edit-peso').value;
+  d[i].alt     = document.getElementById('edit-alt').value;
+  d[i].contato = document.getElementById('edit-contato').value.trim();
+  d[i].pai     = document.getElementById('edit-pai').value.trim();
+  d[i].mae     = document.getElementById('edit-mae').value.trim();
+  d[i].treino  = (t === 'sabado') ? 'Somente Sab' : 'Ter / Qui / Sab';
+  d[i].mens    = novoMens;
+  d[i].inicio  = document.getElementById('edit-inicio').value;
+  d[i].camisa  = document.getElementById('edit-camisa').value;
+  d[i].blusa   = document.getElementById('edit-blusa').value;
+  d[i].garrafa = document.getElementById('edit-garrafa').value;
+
+  DB.saveA(d);
+  document.getElementById('ov-editar').style.display = 'none';
+  renderAlunos();
+  alert('Cadastro de ' + d[i].nome + ' atualizado! Novo treino: ' + d[i].treino + ' | Mensalidade: ' + moeda(novoMens));
+}
+
+
+// ── RELATÓRIO ───────────────────────────────────────────────────────────────
+function iniciarFiltrosRel() {
+  var ms = document.getElementById('rel-mes');
+  var an = document.getElementById('rel-ano');
+  if (ms.options.length > 0) return;
+  var nomes = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  nomes.forEach(function(n,i){ var o=document.createElement('option'); o.value=i; o.textContent=n; ms.appendChild(o); });
+  ms.value = new Date().getMonth();
+  var anoAtual = new Date().getFullYear();
+  for (var y=anoAtual; y>=anoAtual-3; y--) { var o=document.createElement('option'); o.value=y; o.textContent=y; an.appendChild(o); }
+}
+
+function renderRelatorio() {
+  iniciarFiltrosRel();
+  var ms = parseInt(document.getElementById('rel-mes').value);
+  var an = parseInt(document.getElementById('rel-ano').value);
+  var nomeMes = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'][ms];
+  var chave = MESES[ms] + '/' + an;
+  var todos = DB.alunos();
+  var hist  = JSON.parse(localStorage.getItem('nv_hist') || '[]');
+  var pagosMes = hist.filter(function(h){ return h.mes === chave; });
+  var totalEsperado = todos.reduce(function(s,a){ return s+(a.mens||0); }, 0);
+  var totalRecebido = pagosMes.reduce(function(s,h){ return s+(h.valor||0); }, 0);
+  var aPagar = totalEsperado - totalRecebido;
+  var cfg = DB.cfg();
+  var venc = cfg.vencimento ? 'Dia ' + cfg.vencimento : 'Não definido';
+  var hoje = new Date();
+  var diasVenc = cfg.vencimento ? (cfg.vencimento - hoje.getDate()) : null;
+  var alertaHTML = '';
+  if (diasVenc !== null && diasVenc >= 0 && diasVenc <= 5 && ms === hoje.getMonth() && an === hoje.getFullYear()) {
+    alertaHTML = '<div class="alerta-box"><div class="ai">⚠️</div><div><strong>Vencimento em ' + diasVenc + ' dia(s)!</strong><br><span style="font-size:12px;color:var(--ci)">O vencimento das mensalidades de ' + nomeMes + ' é ' + venc + '. Há ' + todos.filter(function(a){ return a.sit==="Pendente"; }).length + ' alunos pendentes.</span></div></div>';
+  }
+  document.getElementById('rel-alerta').innerHTML = alertaHTML;
+  var inadimp = todos.filter(function(a){
+    var pagou = pagosMes.some(function(h){ return h.id === a.id; });
+    return !pagou;
+  });
+  document.getElementById('rel-corpo').innerHTML =
+    '<div class="rel-box">' +
+      '<div style="font-size:15px;font-weight:700;margin-bottom:14px">&#128200; Relatório — ' + nomeMes + '/' + an + '</div>' +
+      '<div class="rel-row"><span>Total de alunos ativos</span><span class="rel-val">' + todos.length + '</span></div>' +
+      '<div class="rel-row"><span>Mensalidades esperadas</span><span class="rel-val">' + moeda(totalEsperado) + '</span></div>' +
+      '<div class="rel-row"><span>Total recebido no mês</span><span class="rel-val" style="color:var(--g)">' + moeda(totalRecebido) + '</span></div>' +
+      '<div class="rel-row"><span>Ainda a receber</span><span class="rel-val" style="color:var(--r)">' + moeda(aPagar) + '</span></div>' +
+      '<div class="rel-row"><span>Pagamentos registrados</span><span class="rel-val">' + pagosMes.length + '</span></div>' +
+      '<div class="rel-row"><span>Vencimento das mensalidades</span><span class="rel-val">' + venc + '</span></div>' +
+    '</div>' +
+    (inadimp.length ? '<div class="rel-box"><div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--r)">Não pagaram em ' + nomeMes + ' (' + inadimp.length + ')</div>' +
+      inadimp.map(function(a){ return '<div class="rel-row"><span>' + a.nome + ' <span style="font-size:11px;color:var(--ci)">' + nomeCat(a.cat) + '</span></span><span class="rel-val" style="color:var(--r)">' + moeda(a.mens) + '</span></div>'; }).join('') + '</div>' : '<div class="info">Todos os alunos pagaram em ' + nomeMes + '!</div>');
+}
+
+// ── ANIVERSÁRIOS ────────────────────────────────────────────────────────────
+function renderAniversarios() {
+  var todos = DB.alunos();
+  var mesAtual = new Date().getMonth() + 1;
+  var nomesMes = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  document.getElementById('aniv-titulo').textContent = 'Aniversariantes de ' + nomesMes[mesAtual-1];
+  var aniv = todos.filter(function(a) {
+    if (!a.nasc) return false;
+    var m = parseInt(a.nasc.split('-')[1]);
+    return m === mesAtual;
+  }).sort(function(a,b){
+    return parseInt(a.nasc.split('-')[2]) - parseInt(b.nasc.split('-')[2]);
+  });
+  var el = document.getElementById('lista-aniv');
+  if (!aniv.length) { el.innerHTML = '<div class="info" style="text-align:center">Nenhum aniversariante este mês.</div>'; return; }
+  el.innerHTML = aniv.map(function(a) {
+    var dia = parseInt(a.nasc.split('-')[2]);
+    var ano = parseInt(a.nasc.split('-')[0]);
+    var idade = new Date().getFullYear() - ano;
+    var hoje = new Date().getDate();
+    var ehHoje = dia === hoje;
+    return '<div class="aniv-card">' +
+      '<div class="aniv-data">' + String(dia).padStart(2,'0') + '<br>' + nomesMes[mesAtual-1].substring(0,3) + '</div>' +
+      '<div>' +
+        '<div style="font-size:14px;font-weight:700">' + a.nome + (ehHoje ? ' 🎂' : '') + '</div>' +
+        '<div style="font-size:12px;color:var(--ci);margin-top:2px">' + nomeCat(a.cat) + ' &middot; ' + idade + ' anos &middot; Contato: ' + (a.contato||'não informado') + '</div>' +
+        (ehHoje ? '<div style="font-size:12px;color:var(--am);font-weight:600;margin-top:4px">&#127874; Aniversário hoje!</div>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+// ── ALERTA DASHBOARD ────────────────────────────────────────────────────────
+function alertaVencimento() {
+  var cfg = DB.cfg();
+  if (!cfg.vencimento) return '';
+  var hoje = new Date();
+  var dias = cfg.vencimento - hoje.getDate();
+  var pend = DB.alunos().filter(function(a){ return a.sit === 'Pendente'; }).length;
+  if (dias < 0 || dias > 7) return '';
+  if (!pend) return '';
+  var txt = dias === 0 ? 'Vence hoje!' : 'Vence em ' + dias + ' dia(s)!';
+  var el2 = document.createElement('div');
+  el2.className = 'alerta-box';
+  el2.style.marginBottom = '20px';
+  el2.innerHTML = '<div class="ai">&#9888;</div><div><strong>' + txt + '</strong> ' + pend + ' aluno(s) ainda nao pagaram.</div>';
+  return el2.outerHTML;
+}
+
+
+// ── SELEÇÃO DE ALUNOS PARA COBRANÇA ─────────────────────────────────────────
+function renderSelAlunos() {
+  var todos = DB.alunos();
+  var el = document.getElementById('sel-lista');
+  if (!todos.length) {
+    el.innerHTML = '<div class="tvz">Nenhum aluno cadastrado.</div>';
+    return;
+  }
+  el.innerHTML = '';
+  todos.forEach(function(a) {
+    var contato = a.contato || '';
+    var resp = a.pai || a.mae || '';
+    var item = document.createElement('label');
+    item.style.cssText = 'display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid var(--bd);cursor:pointer';
+    item.onmouseover = function(){ this.style.background='var(--bg)'; };
+    item.onmouseout  = function(){ this.style.background=''; };
+
+    var chk = document.createElement('input');
+    chk.type = 'checkbox';
+    chk.value = a.id;
+    chk.id = 'chk-' + a.id;
+    chk.style.cssText = 'width:16px;height:16px;cursor:pointer;flex-shrink:0';
+    if (a.sit === 'Pendente') chk.checked = true;
+
+    var info = document.createElement('div');
+    info.style.flex = '1';
+    info.innerHTML =
+      '<div style="font-size:13px;font-weight:600">' + a.nome +
+        ' <span class="badge ' + (a.sit==='Pago'?'bpg':'bpd') + '" style="font-size:10px">' + a.sit + '</span></div>' +
+      '<div style="font-size:12px;color:var(--ci);margin-top:2px">' + nomeCat(a.cat) +
+        (resp ? ' &middot; Resp: ' + resp : '') +
+        (contato ? ' &middot; ' + contato : ' &middot; <span style="color:var(--r)">Sem contato</span>') +
+      '</div>';
+
+    item.appendChild(chk);
+    item.appendChild(info);
+    el.appendChild(item);
+  });
+}
+
+function selTodos(val) {
+  document.querySelectorAll('#sel-lista input[type=checkbox]').forEach(function(c){ c.checked = val; });
+}
+
+function selSoPendentes() {
+  var todos = DB.alunos();
+  document.querySelectorAll('#sel-lista input[type=checkbox]').forEach(function(chk){
+    var a = todos.find(function(x){ return x.id === chk.value; });
+    chk.checked = a ? a.sit === 'Pendente' : false;
+  });
+}
+
+function gerarMsgSelecionados() {
+  var selecionados = [];
+  document.querySelectorAll('#sel-lista input[type=checkbox]:checked').forEach(function(chk){
+    var a = DB.alunos().find(function(x){ return x.id === chk.value; });
+    if (a) selecionados.push(a);
+  });
+  if (!selecionados.length) { alert('Selecione pelo menos um aluno.'); return; }
+
+  var msgs = selecionados.map(function(a) {
+    var contato = a.contato ? '\n📞 Contato do responsável: ' + a.contato : '';
+    return getMsg(a) + contato;
+  }).join('\n\n' + '─'.repeat(30) + '\n\n');
+
+  document.getElementById('ov-sel-aluno').style.display = 'none';
+  document.getElementById('txt-notif').value = msgs;
+  document.getElementById('ov-notif').style.display = 'flex';
+}
+
+renderDash();
+</script>
+</body>
+</html>
